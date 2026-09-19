@@ -1,19 +1,272 @@
 export default {
   async fetch(request, env) {
-    return new Response(`
-<!DOCTYPE html>
-<html>
+    return new Response(`<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SUN.TEC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUN.TEC — Technology • Education • AI • Games</title>
+<meta name="description" content="SUN.TEC — Technology, Education, AI, Games, Apps, Tests, Results and Digital Tools.">
+<meta name="theme-color" content="#071b16">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#eef8f3;
+  background:
+    radial-gradient(circle at 15% 10%,rgba(30,120,85,.25),transparent 30%),
+    radial-gradient(circle at 85% 20%,rgba(212,175,55,.12),transparent 28%),
+    linear-gradient(135deg,#04120f,#071b16 48%,#08151d);
+  min-height:100vh;
+}
+.container{width:min(1180px,92%);margin:auto}
+
+header{
+  padding:22px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo{
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#e5c35b;
+  text-shadow:0 0 22px rgba(229,195,91,.25);
+}
+.logo span{color:#fff}
+.search{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(229,195,91,.25);
+  border-radius:30px;
+  padding:11px 18px;
+  color:#fff;
+  outline:none;
+  width:min(320px,45vw);
+}
+.search::placeholder{color:#9fb2aa}
+
+.hero{
+  text-align:center;
+  padding:75px 0 55px;
+}
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid rgba(229,195,91,.35);
+  border-radius:30px;
+  color:#e5c35b;
+  background:rgba(229,195,91,.06);
+  font-size:13px;
+  letter-spacing:1px;
+}
+h1{
+  margin:20px 0 12px;
+  font-size:clamp(48px,9vw,92px);
+  letter-spacing:6px;
+  line-height:1;
+}
+.hero h1 span{color:#e5c35b}
+.hero p{
+  color:#b7c8c1;
+  font-size:18px;
+  max-width:700px;
+  margin:0 auto 30px;
+  line-height:1.7;
+}
+.cta{
+  display:inline-block;
+  padding:13px 25px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#d9b84f,#f0d77c);
+  color:#071b16;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 8px 30px rgba(229,195,91,.18);
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:35px 0 20px;
+}
+.section-title h2{margin:0;font-size:24px}
+.line{height:1px;flex:1;background:rgba(255,255,255,.1)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.card{
+  min-height:145px;
+  padding:22px;
+  border-radius:18px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.09);
+  text-decoration:none;
+  color:#fff;
+  transition:.25s ease;
+  position:relative;
+  overflow:hidden;
+}
+.card:before{
+  content:"";
+  position:absolute;
+  width:80px;height:80px;
+  right:-30px;top:-30px;
+  border-radius:50%;
+  background:rgba(229,195,91,.08);
+}
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(229,195,91,.45);
+  box-shadow:0 15px 35px rgba(0,0,0,.22);
+}
+.icon{font-size:31px;margin-bottom:15px}
+.card h3{margin:0 0 7px;font-size:18px}
+.card p{margin:0;color:#9fb2aa;font-size:13px;line-height:1.5}
+
+.feature{
+  margin:45px 0;
+  padding:30px;
+  border-radius:22px;
+  border:1px solid rgba(229,195,91,.18);
+  background:linear-gradient(120deg,rgba(16,67,50,.55),rgba(15,30,38,.55));
+}
+.feature h2{margin-top:0;color:#e5c35b}
+.feature p{color:#b7c8c1;line-height:1.7}
+
+footer{
+  margin-top:60px;
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  color:#7f938b;
+  font-size:13px;
+}
+
+@media(max-width:850px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .nav{flex-direction:column}
+  .search{width:100%}
+  .hero{padding:55px 0 40px}
+  h1{font-size:52px}
+  .grid{grid-template-columns:1fr}
+  .card{min-height:120px}
+}
+</style>
 </head>
-<body style="font-family:Arial;text-align:center;padding:60px;">
-  <h1>SUN.TEC</h1>
-  <p>Technology • Education • AI • Games</p>
+
+<body>
+
+<header>
+<div class="container nav">
+  <div class="logo">SUN<span>.</span>TEC</div>
+  <input class="search" type="search" placeholder="Search SUN.TEC...">
+</div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+  <div class="badge">THE DIGITAL TECHNOLOGY PLATFORM</div>
+  <h1>SUN<span>.</span>TEC</h1>
+  <p>
+    Technology, Education, Artificial Intelligence, Games,
+    Digital Apps, Online Tests and Useful Software — all in one place.
+  </p>
+  <a class="cta" href="#explore">Explore SUN.TEC</a>
+</section>
+
+<section id="explore">
+
+<div class="section-title">
+  <h2>Explore Platform</h2>
+  <div class="line"></div>
+</div>
+
+<div class="grid">
+
+<a class="card" href="#">
+  <div class="icon">📱</div>
+  <h3>Apps</h3>
+  <p>Discover useful digital applications and tools.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">🎮</div>
+  <h3>Games</h3>
+  <p>Fun, educational and interactive games.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">🤖</div>
+  <h3>AI Tools</h3>
+  <p>Explore practical artificial intelligence tools.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">📚</div>
+  <h3>Education</h3>
+  <p>Learning resources, notes and study material.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">📝</div>
+  <h3>Online Tests</h3>
+  <p>Practice tests, quizzes and assessments.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">📊</div>
+  <h3>Results</h3>
+  <p>Access digital test and examination results.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">💻</div>
+  <h3>Software</h3>
+  <p>Useful software and developer resources.</p>
+</a>
+
+<a class="card" href="#">
+  <div class="icon">📥</div>
+  <h3>Downloads</h3>
+  <p>Apps, files, resources and digital downloads.</p>
+</a>
+
+</div>
+</section>
+
+<section class="feature">
+  <h2>Welcome to SUN.TEC</h2>
+  <p>
+    A growing digital platform for technology, education,
+    artificial intelligence, games and useful online services.
+    New applications, learning resources and tools will be added here.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  © 2026 SUN.TEC — Technology • Education • AI • Games
+</footer>
+
 </body>
-</html>
-`, {
+</html>`, {
       headers: {
         "content-type": "text/html;charset=UTF-8"
       }
