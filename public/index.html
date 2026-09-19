@@ -1,502 +1,704 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>SUN.TEC — Educational Technology Platform</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #10201c;
-      background: #f5f8f6;
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* ================= HEADER ================= */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      background: rgba(255,255,255,.95);
-      border-bottom: 1px solid #dfe8e3;
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      min-height: 72px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #08734e;
-    }
-
-    .logo span {
-      color: #c59b2b;
-    }
-
-    .desktop-menu {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .desktop-menu a {
-      padding: 9px 12px;
-      border-radius: 9px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #30433d;
-      transition: .2s;
-    }
-
-    .desktop-menu a:hover {
-      background: #e9f5ef;
-      color: #08734e;
-    }
-
-    .start-btn {
-      background: #08734e !important;
-      color: white !important;
-    }
-
-    .menu-btn {
-      display: none;
-      border: 0;
-      background: #08734e;
-      color: white;
-      width: 43px;
-      height: 43px;
-      border-radius: 10px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    .mobile-menu {
-      display: none;
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px 15px;
-    }
-
-    .mobile-menu a {
-      display: block;
-      padding: 13px 15px;
-      margin-top: 5px;
-      border-radius: 10px;
-      background: #f0f6f3;
-      font-weight: 700;
-      color: #17483a;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,.16), transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(197,155,43,.22), transparent 30%),
-        linear-gradient(135deg, #075c42, #0b8060 55%, #063e30);
-
-      color: white;
-      padding: 80px 20px;
-    }
-
-    .hero-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      padding: 7px 13px;
-      border: 1px solid rgba(255,255,255,.3);
-      background: rgba(255,255,255,.08);
-      border-radius: 30px;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: #f0d16b;
-    }
-
-    .hero p {
-      max-width: 650px;
-      font-size: 18px;
-      color: #e2f0eb;
-      margin-bottom: 28px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-btn {
-      display: inline-block;
-      padding: 13px 19px;
-      border-radius: 11px;
-      font-weight: 800;
-      background: #f0d16b;
-      color: #163c30;
-    }
-
-    .hero-btn.alt {
-      background: rgba(255,255,255,.12);
-      color: white;
-      border: 1px solid rgba(255,255,255,.25);
-    }
-
-    .hero-panel {
-      padding: 28px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-panel h3 {
-      color: #f0d16b;
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
-
-    .hero-panel div {
-      padding: 11px 0;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      color: #e8f4ef;
-    }
-
-    /* ================= GENERAL ================= */
-
-    section {
-      padding: 70px 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title h2 {
-      font-size: 36px;
-      color: #123c31;
-      margin-bottom: 8px;
-    }
-
-    .section-title p {
-      color: #687a74;
-    }
-
-    /* ================= CARDS ================= */
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 25px;
-      border-radius: 18px;
-      background: white;
-      border: 1px solid #dce7e1;
-      box-shadow: 0 10px 30px rgba(16,48,37,.06);
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 35px rgba(16,48,37,.11);
-    }
-
-    .card-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
-
-    .card h3 {
-      color: #164a3a;
-      margin-bottom: 7px;
-    }
-
-    .card p {
-      color: #6a7974;
-      font-size: 14px;
-    }
-
-    /* ================= FEATURED TESTS ================= */
-
-    .tests {
-      background: #edf5f1;
-    }
-
-    .test-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .test-card {
-      padding: 25px;
-      border-radius: 18px;
-      background: white;
-      border: 1px solid #dbe8e1;
-    }
-
-    .test-card .tag {
-      display: inline-block;
-      padding: 5px 9px;
-      border-radius: 20px;
-      background: #e7f5ed;
-      color: #08734e;
-      font-size: 11px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .test-card h3 {
-      margin-bottom: 8px;
-      color: #163e32;
-    }
-
-    .test-card p {
-      color: #6c7b76;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    .test-btn {
-      display: inline-block;
-      padding: 10px 15px;
-      border-radius: 9px;
-      background: #08734e;
-      color: white;
-      font-size: 13px;
-      font-weight: bold;
-    }
-
-    /* ================= CLASSES ================= */
-
-    .class-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 12px;
-    }
-
-    .class-box {
-      padding: 20px 10px;
-      text-align: center;
-      border-radius: 15px;
-      background: white;
-      border: 1px solid #dbe6e0;
-      font-weight: 800;
-      color: #17513f;
-    }
-
-    .class-box span {
-      display: block;
-      color: #c39a2b;
-      font-size: 25px;
-      margin-bottom: 5px;
-    }
-
-    /* ================= TECHNOLOGY ================= */
-
-    .tech {
-      background:
-        linear-gradient(135deg, #102f27, #173f34);
-      color: white;
-    }
-
-    .tech .section-title h2 {
-      color: white;
-    }
-
-    .tech .section-title p {
-      color: #b8cbc4;
-    }
-
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .tech-card {
-      padding: 25px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-
-    .tech-card h3 {
-      color: #f0d16b;
-      margin-bottom: 8px;
-    }
-
-    .tech-card p {
-      color: #c1d0cb;
-      font-size: 14px;
-    }
-
-    /* ================= ABOUT ================= */
-
-    .about-box {
-      max-width: 850px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .about-box p {
-      color: #66756f;
-      font-size: 16px;
-      line-height: 1.9;
-    }
-
-    /* ================= FOOTER ================= */
-
-    footer {
-      background: #071c16;
-      color: #9cafaa;
-      padding: 35px 20px;
-      text-align: center;
-    }
-
-    footer strong {
-      color: #e3c35e;
-    }
-
-    /* ================= MOBILE ================= */
-
-    @media (max-width: 1000px) {
-
-      .desktop-menu {
-        display: none;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .test-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .class-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      .nav {
-        min-height: 65px;
-        padding: 9px 15px;
-      }
-
-      .logo {
-        font-size: 23px;
-      }
-
-      .mobile-menu {
-        padding-left: 15px;
-        padding-right: 15px;
-      }
-
-      .hero {
-        padding: 55px 15px;
-      }
-
-      section {
-        padding: 55px 15px;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tech-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .class-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .section-title h2 {
-        font-size: 29px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SUN.TEC — Educational Technology Platform</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#10201c;
+  background:#eef4f1;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(6,24,19,.94);
+  border-bottom:1px solid rgba(218,180,64,.35);
+  backdrop-filter:blur(14px);
+}
+
+.nav{
+  max-width:1250px;
+  margin:auto;
+  min-height:72px;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:29px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:#fff;
+  text-shadow:0 3px 12px rgba(0,0,0,.35);
+}
+
+.logo span{
+  color:#e3bd4b;
+}
+
+.desktop-menu{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.desktop-menu a{
+  color:#e8f0ec;
+  font-size:13px;
+  font-weight:700;
+  padding:9px 11px;
+  border-radius:9px;
+  transition:.2s;
+}
+
+.desktop-menu a:hover{
+  background:rgba(255,255,255,.1);
+  color:#f1d36a;
+}
+
+.start-btn{
+  background:#d8b445!important;
+  color:#13251f!important;
+}
+
+.menu-btn{
+  display:none;
+  border:0;
+  background:#d8b445;
+  color:#14251f;
+  width:44px;
+  height:44px;
+  border-radius:11px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+  padding:0 15px 15px;
+}
+
+.mobile-menu a{
+  display:block;
+  padding:13px 15px;
+  margin-top:5px;
+  border-radius:10px;
+  color:white;
+  background:rgba(255,255,255,.08);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  min-height:620px;
+  overflow:hidden;
+  color:white;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(35,184,132,.35),transparent 28%),
+    radial-gradient(circle at 90% 70%,rgba(218,180,64,.25),transparent 30%),
+    linear-gradient(135deg,#041812,#073d2d 50%,#09291f);
+}
+
+.hero-inner{
+  max-width:1250px;
+  min-height:620px;
+  margin:auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:35px;
+  align-items:center;
+}
+
+.hero-content{
+  position:relative;
+  z-index:5;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border:1px solid rgba(226,191,76,.45);
+  background:rgba(226,191,76,.09);
+  color:#f0d36d;
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:1px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(45px,7vw,82px);
+  line-height:.95;
+  margin-bottom:22px;
+  letter-spacing:-3px;
+}
+
+.hero h1 span{
+  color:#e4c050;
+  text-shadow:0 4px 25px rgba(228,192,80,.2);
+}
+
+.hero p{
+  max-width:650px;
+  color:#c9dad4;
+  font-size:18px;
+  line-height:1.7;
+  margin-bottom:28px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.hero-btn{
+  padding:13px 19px;
+  border-radius:11px;
+  background:#dfbd4f;
+  color:#11251d;
+  font-weight:800;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.hero-btn.alt{
+  color:white;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.18);
+}
+
+/* ================= 3D STAGE ================= */
+
+.scene{
+  position:relative;
+  height:440px;
+  perspective:1100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.glow{
+  position:absolute;
+  width:330px;
+  height:330px;
+  border-radius:50%;
+  background:rgba(39,194,139,.13);
+  filter:blur(35px);
+}
+
+.platform{
+  position:absolute;
+  width:330px;
+  height:170px;
+  border:1px solid rgba(225,190,76,.4);
+  border-radius:25px;
+  background:linear-gradient(145deg,#123e31,#071b15);
+  transform:rotateX(58deg) rotateZ(-8deg);
+  box-shadow:
+    0 45px 60px rgba(0,0,0,.5),
+    inset 0 0 35px rgba(218,180,64,.08);
+}
+
+.platform:before{
+  content:"";
+  position:absolute;
+  inset:15px;
+  border:1px solid rgba(218,180,64,.18);
+  border-radius:18px;
+}
+
+.cube{
+  position:absolute;
+  width:155px;
+  height:155px;
+  transform-style:preserve-3d;
+  transform:rotateX(-12deg) rotateY(-28deg) rotateZ(4deg);
+  animation:float 5s ease-in-out infinite;
+}
+
+.face{
+  position:absolute;
+  width:155px;
+  height:155px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:22px;
+  letter-spacing:1px;
+  border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(145deg,#168360,#07523d);
+  box-shadow:inset 0 0 35px rgba(0,0,0,.2);
+}
+
+.front{
+  transform:translateZ(77px);
+}
+
+.back{
+  transform:rotateY(180deg) translateZ(77px);
+}
+
+.right{
+  transform:rotateY(90deg) translateZ(77px);
+  background:linear-gradient(145deg,#c69e2e,#806516);
+}
+
+.left{
+  transform:rotateY(-90deg) translateZ(77px);
+}
+
+.top{
+  transform:rotateX(90deg) translateZ(77px);
+  background:linear-gradient(145deg,#24a477,#0b6149);
+}
+
+.bottom{
+  transform:rotateX(-90deg) translateZ(77px);
+}
+
+.cube-text{
+  text-align:center;
+  line-height:1.1;
+}
+
+.cube-text small{
+  display:block;
+  font-size:12px;
+  margin-top:7px;
+  color:#d9eadf;
+}
+
+.orbit{
+  position:absolute;
+  width:360px;
+  height:170px;
+  border:1px solid rgba(226,191,76,.25);
+  border-radius:50%;
+  transform:rotateX(62deg) rotateZ(-15deg);
+}
+
+.orbit-dot{
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#e4c050;
+  box-shadow:0 0 25px #e4c050;
+  top:12px;
+  left:75px;
+  animation:orbit 5s linear infinite;
+}
+
+.float-card{
+  position:absolute;
+  padding:14px 17px;
+  border-radius:14px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(12px);
+  box-shadow:0 15px 35px rgba(0,0,0,.28);
+  font-size:13px;
+  font-weight:800;
+}
+
+.card-test{
+  top:65px;
+  right:10px;
+  animation:float 4.5s ease-in-out infinite;
+}
+
+.card-ai{
+  bottom:70px;
+  left:5px;
+  animation:float 5.5s ease-in-out infinite reverse;
+}
+
+.card-game{
+  bottom:25px;
+  right:40px;
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotateX(-12deg) rotateY(-28deg) rotateZ(4deg);}
+  50%{transform:translateY(-18px) rotateX(-10deg) rotateY(-24deg) rotateZ(4deg);}
+}
+
+@keyframes orbit{
+  0%{transform:rotate(0deg) translateX(135px) rotate(0deg);}
+  100%{transform:rotate(360deg) translateX(135px) rotate(-360deg);}
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+  padding:75px 20px;
+}
+
+.container{
+  max-width:1250px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:42px;
+}
+
+.section-title h2{
+  font-size:38px;
+  color:#123d30;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  color:#6c7b75;
+}
+
+/* ================= 3D CARDS ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.card-3d{
+  position:relative;
+  padding:28px;
+  min-height:190px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#fff,#edf5f1);
+  border:1px solid #d5e3dc;
+  box-shadow:
+    0 14px 25px rgba(17,61,46,.08),
+    0 4px 0 #d4e0da;
+  transition:.3s;
+  transform-style:preserve-3d;
+}
+
+.card-3d:hover{
+  transform:translateY(-9px) rotateX(3deg) rotateY(-3deg);
+  box-shadow:0 25px 40px rgba(17,61,46,.15);
+}
+
+.icon-3d{
+  width:62px;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px;
+  font-size:31px;
+  background:linear-gradient(145deg,#e1f5ec,#bcdccc);
+  box-shadow:
+    0 8px 0 #9fc9b6,
+    0 14px 20px rgba(24,88,65,.13);
+  margin-bottom:22px;
+}
+
+.card-3d h3{
+  color:#164a39;
+  margin-bottom:7px;
+}
+
+.card-3d p{
+  color:#6a7973;
+  font-size:14px;
+}
+
+/* ================= TESTS ================= */
+
+.tests{
+  background:
+    radial-gradient(circle at 80% 20%,rgba(218,180,64,.1),transparent 30%),
+    #e9f2ee;
+}
+
+.test-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.test-card{
+  padding:27px;
+  border-radius:20px;
+  background:white;
+  border:1px solid #d8e5df;
+  box-shadow:0 12px 25px rgba(16,55,42,.07);
+}
+
+.tag{
+  display:inline-block;
+  padding:5px 10px;
+  border-radius:20px;
+  background:#e6f5ed;
+  color:#08734e;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:13px;
+}
+
+.test-card h3{
+  color:#163e32;
+  margin-bottom:8px;
+}
+
+.test-card p{
+  color:#6c7b76;
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.test-btn{
+  display:inline-block;
+  padding:10px 15px;
+  border-radius:9px;
+  background:#08734e;
+  color:white;
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* ================= CLASSES ================= */
+
+.class-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:14px;
+}
+
+.class-box{
+  padding:22px 10px;
+  text-align:center;
+  border-radius:17px;
+  background:white;
+  border:1px solid #d9e5df;
+  box-shadow:0 8px 18px rgba(15,55,42,.06);
+  font-weight:800;
+  color:#174c3b;
+}
+
+.class-box span{
+  display:block;
+  color:#c39b2d;
+  font-size:26px;
+  margin-bottom:5px;
+}
+
+/* ================= TECHNOLOGY ================= */
+
+.tech{
+  color:white;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(25,160,112,.16),transparent 30%),
+    linear-gradient(135deg,#071d17,#12382d);
+}
+
+.tech .section-title h2{
+  color:white;
+}
+
+.tech .section-title p{
+  color:#b9cbc5;
+}
+
+.tech-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.tech-card{
+  padding:27px;
+  min-height:180px;
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 18px 35px rgba(0,0,0,.2);
+  transition:.3s;
+}
+
+.tech-card:hover{
+  transform:translateY(-8px) rotateX(2deg);
+}
+
+.tech-card .tech-icon{
+  font-size:35px;
+  margin-bottom:15px;
+}
+
+.tech-card h3{
+  color:#f0d16b;
+  margin-bottom:8px;
+}
+
+.tech-card p{
+  color:#c0d0ca;
+  font-size:14px;
+}
+
+/* ================= ABOUT ================= */
+
+.about-box{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.about-box p{
+  color:#65746e;
+  font-size:16px;
+  line-height:1.9;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#061812;
+  color:#9cafaa;
+  text-align:center;
+  padding:38px 20px;
+}
+
+footer strong{
+  color:#e3c35e;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+  .desktop-menu{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    padding-top:55px;
+  }
+
+  .scene{
+    height:410px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .test-grid{
+    grid-template-columns:1fr;
+  }
+
+  .tech-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .class-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+@media(max-width:600px){
+
+  .nav{
+    min-height:65px;
+    padding:9px 15px;
+  }
+
+  .logo{
+    font-size:23px;
+  }
+
+  section{
+    padding:55px 15px;
+  }
+
+  .hero{
+    min-height:auto;
+  }
+
+  .hero-inner{
+    padding:55px 15px 40px;
+  }
+
+  .hero h1{
+    font-size:50px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .scene{
+    height:360px;
+    transform:scale(.82);
+    margin:-15px -30px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .tech-grid{
+    grid-template-columns:1fr;
+  }
+
+  .class-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-title h2{
+    font-size:30px;
+  }
+
+  .float-card{
+    font-size:11px;
+    padding:10px 12px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
+
   <div class="nav">
 
     <a href="/" class="logo">
@@ -528,19 +730,20 @@
     <a href="#about">About</a>
     <a href="#tests">Start Test</a>
   </div>
+
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
   <div class="hero-inner">
 
-    <div>
+    <div class="hero-content">
 
-      <div class="hero-badge">
-        EDUCATION • TECHNOLOGY • INNOVATION
+      <div class="badge">
+        EDUCATION • TECHNOLOGY • AI • INNOVATION
       </div>
 
       <h1>
@@ -553,6 +756,7 @@
       </p>
 
       <div class="hero-buttons">
+
         <a href="#tests" class="hero-btn">
           Start Learning
         </a>
@@ -560,20 +764,76 @@
         <a href="/games.html" class="hero-btn alt">
           🎮 Explore Games
         </a>
+
       </div>
 
     </div>
 
-    <div class="hero-panel">
 
-      <h3>🚀 SUN.TEC Platform</h3>
+    <!-- 3D OBJECT -->
 
-      <div>📚 Digital Education</div>
-      <div>📝 Online Tests</div>
-      <div>📊 Smart Results</div>
-      <div>🤖 AI Learning</div>
-      <div>🎮 Educational Games</div>
-      <div>💻 Technology & Apps</div>
+    <div class="scene">
+
+      <div class="glow"></div>
+
+      <div class="platform"></div>
+
+      <div class="orbit">
+        <div class="orbit-dot"></div>
+      </div>
+
+      <div class="cube">
+
+        <div class="face front">
+          <div class="cube-text">
+            SUN.TEC
+            <small>LEARN</small>
+          </div>
+        </div>
+
+        <div class="face back">
+          <div class="cube-text">
+            AI
+            <small>SMART</small>
+          </div>
+        </div>
+
+        <div class="face right">
+          <div class="cube-text">
+            TEST
+            <small>ASSESS</small>
+          </div>
+        </div>
+
+        <div class="face left">
+          <div class="cube-text">
+            GAME
+            <small>PLAY</small>
+          </div>
+        </div>
+
+        <div class="face top">
+          <div class="cube-text">
+            TECH
+            <small>CREATE</small>
+          </div>
+        </div>
+
+        <div class="face bottom"></div>
+
+      </div>
+
+      <div class="float-card card-test">
+        📝 Online Tests
+      </div>
+
+      <div class="float-card card-ai">
+        🤖 AI Learning
+      </div>
+
+      <div class="float-card card-game">
+        🎮 Games
+      </div>
 
     </div>
 
@@ -582,41 +842,74 @@
 </section>
 
 
-<!-- PLATFORM -->
+<!-- ================= EXPLORE ================= -->
 
 <section>
 
   <div class="container">
 
     <div class="section-title">
+
       <h2>Explore SUN.TEC</h2>
-      <p>Everything students need in one educational platform.</p>
+
+      <p>
+        Education, technology and digital learning in one platform.
+      </p>
+
     </div>
+
 
     <div class="grid">
 
-      <a href="#tests" class="card">
-        <div class="card-icon">📝</div>
+      <a href="#tests" class="card-3d">
+
+        <div class="icon-3d">📝</div>
+
         <h3>Online Tests</h3>
-        <p>Practice and attempt online educational tests.</p>
+
+        <p>
+          Practice and attempt educational tests online.
+        </p>
+
       </a>
 
-      <a href="/results.html" class="card">
-        <div class="card-icon">📊</div>
+
+      <a href="/results.html" class="card-3d">
+
+        <div class="icon-3d">📊</div>
+
         <h3>Results</h3>
-        <p>View marks, percentage and academic performance.</p>
+
+        <p>
+          View marks, percentage and academic performance.
+        </p>
+
       </a>
 
-      <a href="/games.html" class="card">
-        <div class="card-icon">🎮</div>
+
+      <a href="/games.html" class="card-3d">
+
+        <div class="icon-3d">🎮</div>
+
         <h3>Games</h3>
-        <p>Discover educational and interactive digital games.</p>
+
+        <p>
+          Discover interactive educational games.
+        </p>
+
       </a>
 
-      <a href="#technology" class="card">
-        <div class="card-icon">💻</div>
+
+      <a href="#technology" class="card-3d">
+
+        <div class="icon-3d">💻</div>
+
         <h3>Technology</h3>
-        <p>Explore software, apps, AI and digital skills.</p>
+
+        <p>
+          Explore AI, apps, software and digital tools.
+        </p>
+
       </a>
 
     </div>
@@ -626,16 +919,22 @@
 </section>
 
 
-<!-- TESTS -->
+<!-- ================= TESTS ================= -->
 
 <section class="tests" id="tests">
 
   <div class="container">
 
     <div class="section-title">
+
       <h2>Featured Online Tests</h2>
-      <p>Test your knowledge with SUN.TEC.</p>
+
+      <p>
+        Test your knowledge with SUN.TEC.
+      </p>
+
     </div>
+
 
     <div class="test-grid">
 
@@ -681,7 +980,7 @@
         <h3>Mathematics</h3>
 
         <p>
-          Interactive mathematics practice and assessments.
+          Interactive mathematics practice and assessment.
         </p>
 
         <span class="test-btn">
@@ -697,16 +996,22 @@
 </section>
 
 
-<!-- CLASSES -->
+<!-- ================= CLASSES ================= -->
 
 <section id="classes">
 
   <div class="container">
 
     <div class="section-title">
+
       <h2>Classes & Levels</h2>
-      <p>Educational resources from middle school to college level.</p>
+
+      <p>
+        Educational resources from Class 6 to Class 12.
+      </p>
+
     </div>
+
 
     <div class="class-grid">
 
@@ -752,7 +1057,7 @@
 </section>
 
 
-<!-- TECHNOLOGY -->
+<!-- ================= TECHNOLOGY ================= -->
 
 <section class="tech" id="technology">
 
@@ -772,31 +1077,54 @@
     <div class="tech-grid">
 
       <div class="tech-card">
-        <h3>🤖 AI Education</h3>
+
+        <div class="tech-icon">🤖</div>
+
+        <h3>AI Education</h3>
+
         <p>
           AI-powered learning assistants and educational tools.
         </p>
+
       </div>
 
+
       <div class="tech-card">
-        <h3>📱 Apps</h3>
+
+        <div class="tech-icon">📱</div>
+
+        <h3>Apps</h3>
+
         <p>
-          Useful educational and productivity applications.
+          Educational and productivity applications.
         </p>
+
       </div>
 
+
       <div class="tech-card">
-        <h3>🎮 Games</h3>
+
+        <div class="tech-icon">🎮</div>
+
+        <h3>Games</h3>
+
         <p>
           Learning through interactive digital experiences.
         </p>
+
       </div>
 
+
       <div class="tech-card">
-        <h3>💻 Software</h3>
+
+        <div class="tech-icon">💻</div>
+
+        <h3>Software</h3>
+
         <p>
-          Digital tools and software for students and teachers.
+          Digital tools for students and teachers.
         </p>
+
       </div>
 
     </div>
@@ -806,7 +1134,7 @@
 </section>
 
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 
 <section id="about">
 
@@ -835,9 +1163,7 @@
 
 <footer>
 
-  <div>
-    <strong>SUN.TEC</strong>
-  </div>
+  <strong>SUN.TEC</strong>
 
   <div>
     Educational Technology Platform
@@ -852,32 +1178,35 @@
 
 <script>
 
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
-  menuBtn.addEventListener("click", function () {
+menuBtn.addEventListener("click",function(){
 
-    if (mobileMenu.style.display === "block") {
-      mobileMenu.style.display = "none";
-      menuBtn.textContent = "☰";
-    } else {
-      mobileMenu.style.display = "block";
-      menuBtn.textContent = "✕";
-    }
+  if(mobileMenu.style.display === "block"){
+
+    mobileMenu.style.display="none";
+    menuBtn.textContent="☰";
+
+  }else{
+
+    mobileMenu.style.display="block";
+    menuBtn.textContent="✕";
+
+  }
+
+});
+
+document.querySelectorAll(".mobile-menu a").forEach(function(link){
+
+  link.addEventListener("click",function(){
+
+    mobileMenu.style.display="none";
+    menuBtn.textContent="☰";
 
   });
 
-
-  document.querySelectorAll(".mobile-menu a").forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-      mobileMenu.style.display = "none";
-      menuBtn.textContent = "☰";
-
-    });
-
-  });
+});
 
 </script>
 
