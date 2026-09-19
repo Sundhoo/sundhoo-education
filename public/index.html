@@ -1,658 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SUN.TEC | Education & Technology</title>
-
-<style>
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f7f6;
-  color:#18231f;
-}
-
-/* ================= HEADER ================= */
-
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(5,55,40,.97);
-  border-bottom:1px solid #c7a646;
-  box-shadow:0 4px 20px rgba(0,0,0,.15);
-}
-
-.nav{
-  max-width:1200px;
-  margin:auto;
-  min-height:72px;
-  padding:12px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-/* LOGO */
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  text-decoration:none;
-  color:white;
-}
-
-.logo-icon{
-  width:45px;
-  height:45px;
-  border-radius:13px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#d5ad43,#f2d77d);
-  color:#063b2b;
-  font-weight:bold;
-  font-size:23px;
-}
-
-.logo-name{
-  font-size:23px;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-
-.logo-sub{
-  display:block;
-  font-size:10px;
-  color:#cfe4dc;
-  letter-spacing:.4px;
-}
-
-/* DESKTOP NAV */
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:5px;
-}
-
-.nav-links a{
-  color:#eaf4f0;
-  text-decoration:none;
-  padding:10px 12px;
-  border-radius:8px;
-  font-size:14px;
-  font-weight:bold;
-}
-
-.nav-links a:hover{
-  background:rgba(255,255,255,.12);
-  color:#f2d77d;
-}
-
-.nav-test{
-  background:#d5ad43 !important;
-  color:#073426 !important;
-}
-
-/* MOBILE BUTTON */
-
-.menu-button{
-  display:none;
-  border:1px solid rgba(255,255,255,.35);
-  background:rgba(255,255,255,.1);
-  color:white;
-  padding:10px 13px;
-  border-radius:9px;
-  font-size:20px;
-  cursor:pointer;
-}
-
-/* MOBILE MENU */
-
-.mobile-menu{
-  display:none;
-  background:#073b2b;
-  border-top:1px solid rgba(213,173,67,.4);
-}
-
-.mobile-menu a{
-  display:block;
-  padding:15px 20px;
-  color:white;
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  font-weight:bold;
-}
-
-.mobile-menu a:hover{
-  background:#0b5940;
-  color:#f2d77d;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  max-width:1200px;
-  width:94%;
-  margin:25px auto;
-  border-radius:25px;
-  padding:50px 38px;
-  color:white;
-  overflow:hidden;
-  position:relative;
-
-  background:
-    radial-gradient(circle at 90% 15%,rgba(37,99,235,.55),transparent 28%),
-    radial-gradient(circle at 15% 90%,rgba(124,58,237,.45),transparent 30%),
-    linear-gradient(135deg,#063b2b,#087052 55%,#164f70);
-
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:720px;
-}
-
-.badge{
-  display:inline-block;
-  padding:7px 12px;
-  border-radius:30px;
-  background:rgba(255,255,255,.13);
-  border:1px solid rgba(255,255,255,.2);
-  font-size:11px;
-  margin-bottom:16px;
-}
-
-.hero h1{
-  margin:0;
-  font-size:clamp(38px,7vw,62px);
-  line-height:1;
-}
-
-.hero h1 span{
-  color:#f2d77d;
-}
-
-.hero p{
-  color:#e4f1ec;
-  font-size:17px;
-  line-height:1.6;
-  max-width:680px;
-}
-
-.hero-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:24px;
-}
-
-.primary,
-.secondary{
-  border:0;
-  padding:13px 20px;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.primary{
-  background:#d5ad43;
-  color:#073426;
-}
-
-.secondary{
-  background:white;
-  color:#073426;
-}
-
-/* ================= MAIN ================= */
-
-.container{
-  width:94%;
-  max-width:1200px;
-  margin:35px auto;
-}
-
-.section-head{
-  margin:38px 0 17px;
-}
-
-.section-head h2{
-  margin:0;
-  font-size:27px;
-}
-
-.section-head p{
-  margin:6px 0 0;
-  color:#65736d;
-}
-
-/* ================= DASHBOARD ================= */
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:17px;
-}
-
-.card{
-  background:white;
-  border:1px solid #e0e8e4;
-  border-radius:18px;
-  padding:22px;
-  text-decoration:none;
-  color:#18231f;
-  box-shadow:0 7px 22px rgba(0,0,0,.06);
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 14px 30px rgba(0,0,0,.1);
-}
-
-.icon{
-  width:52px;
-  height:52px;
-  border-radius:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:26px;
-}
-
-.blue{
-  background:#e8efff;
-  color:#2563eb;
-}
-
-.green{
-  background:#e3f5ed;
-  color:#087052;
-}
-
-.purple{
-  background:#f0e8ff;
-  color:#7c3aed;
-}
-
-.orange{
-  background:#fff0df;
-  color:#ea7b18;
-}
-
-.cyan{
-  background:#e0f7fb;
-  color:#0891b2;
-}
-
-.card h3{
-  margin:17px 0 7px;
-  font-size:18px;
-}
-
-.card p{
-  margin:0;
-  color:#65736d;
-  font-size:14px;
-  line-height:1.5;
-}
-
-/* ================= TESTS ================= */
-
-.test-card{
-  display:flex;
-  align-items:center;
-  gap:17px;
-}
-
-.test-card .icon{
-  flex-shrink:0;
-}
-
-/* ================= CLASSES ================= */
-
-.class-grid{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:14px;
-}
-
-.class-card{
-  background:white;
-  border:1px solid #e0e8e4;
-  border-radius:17px;
-  padding:20px;
-  text-decoration:none;
-  color:#18231f;
-  box-shadow:0 5px 18px rgba(0,0,0,.05);
-  transition:.2s;
-}
-
-.class-card:hover{
-  transform:translateY(-4px);
-  border-color:#d5ad43;
-}
-
-.class-number{
-  font-size:30px;
-  font-weight:bold;
-  color:#07563e;
-}
-
-.class-card h3{
-  margin:5px 0;
-}
-
-.class-card small{
-  color:#65736d;
-}
-
-/* ================= FEATURE ================= */
-
-.featured{
-  margin-top:32px;
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:18px;
-}
-
-.feature-box{
-  min-height:200px;
-  border-radius:20px;
-  padding:28px;
-  color:white;
-}
-
-.feature-box h2{
-  margin:0 0 10px;
-}
-
-.feature-box p{
-  line-height:1.6;
-  color:#e9f5f0;
-}
-
-.feature-box button{
-  border:0;
-  padding:11px 16px;
-  border-radius:9px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.feature-green{
-  background:linear-gradient(135deg,#063b2b,#0b7655);
-}
-
-.feature-purple{
-  background:linear-gradient(135deg,#452080,#7c3aed);
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-  margin-top:60px;
-  background:#06251b;
-  color:white;
-  padding:35px 20px;
-}
-
-.footer-inner{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
-footer strong{
-  color:#f2d77d;
-}
-
-footer p{
-  color:#b8cec5;
-  margin:8px 0 0;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .menu-button{
-    display:block;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .class-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .featured{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:560px){
-
-  .nav{
-    min-height:65px;
-    padding:10px 14px;
-  }
-
-  .logo-icon{
-    width:40px;
-    height:40px;
-  }
-
-  .logo-name{
-    font-size:20px;
-  }
-
-  .logo-sub{
-    font-size:9px;
-  }
-
-  .hero{
-    padding:35px 22px;
-    border-radius:20px;
-  }
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .class-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .container{
-    margin-top:25px;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SUN.TEC — Educational Technology Platform</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #10201c;
+      background: #f5f8f6;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid #dfe8e3;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 72px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #08734e;
+    }
+
+    .logo span {
+      color: #c59b2b;
+    }
+
+    .desktop-menu {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .desktop-menu a {
+      padding: 9px 12px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #30433d;
+      transition: .2s;
+    }
+
+    .desktop-menu a:hover {
+      background: #e9f5ef;
+      color: #08734e;
+    }
+
+    .start-btn {
+      background: #08734e !important;
+      color: white !important;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: #08734e;
+      color: white;
+      width: 43px;
+      height: 43px;
+      border-radius: 10px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px 15px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 15px;
+      margin-top: 5px;
+      border-radius: 10px;
+      background: #f0f6f3;
+      font-weight: 700;
+      color: #17483a;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.16), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(197,155,43,.22), transparent 30%),
+        linear-gradient(135deg, #075c42, #0b8060 55%, #063e30);
+
+      color: white;
+      padding: 80px 20px;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid rgba(255,255,255,.3);
+      background: rgba(255,255,255,.08);
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: #f0d16b;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 18px;
+      color: #e2f0eb;
+      margin-bottom: 28px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 13px 19px;
+      border-radius: 11px;
+      font-weight: 800;
+      background: #f0d16b;
+      color: #163c30;
+    }
+
+    .hero-btn.alt {
+      background: rgba(255,255,255,.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .hero-panel {
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-panel h3 {
+      color: #f0d16b;
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    .hero-panel div {
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      color: #e8f4ef;
+    }
+
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      color: #123c31;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #687a74;
+    }
+
+    /* ================= CARDS ================= */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 25px;
+      border-radius: 18px;
+      background: white;
+      border: 1px solid #dce7e1;
+      box-shadow: 0 10px 30px rgba(16,48,37,.06);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 35px rgba(16,48,37,.11);
+    }
+
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: #164a3a;
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: #6a7974;
+      font-size: 14px;
+    }
+
+    /* ================= FEATURED TESTS ================= */
+
+    .tests {
+      background: #edf5f1;
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .test-card {
+      padding: 25px;
+      border-radius: 18px;
+      background: white;
+      border: 1px solid #dbe8e1;
+    }
+
+    .test-card .tag {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      background: #e7f5ed;
+      color: #08734e;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .test-card h3 {
+      margin-bottom: 8px;
+      color: #163e32;
+    }
+
+    .test-card p {
+      color: #6c7b76;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .test-btn {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 9px;
+      background: #08734e;
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* ================= CLASSES ================= */
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+    }
+
+    .class-box {
+      padding: 20px 10px;
+      text-align: center;
+      border-radius: 15px;
+      background: white;
+      border: 1px solid #dbe6e0;
+      font-weight: 800;
+      color: #17513f;
+    }
+
+    .class-box span {
+      display: block;
+      color: #c39a2b;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    /* ================= TECHNOLOGY ================= */
+
+    .tech {
+      background:
+        linear-gradient(135deg, #102f27, #173f34);
+      color: white;
+    }
+
+    .tech .section-title h2 {
+      color: white;
+    }
+
+    .tech .section-title p {
+      color: #b8cbc4;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .tech-card {
+      padding: 25px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .tech-card h3 {
+      color: #f0d16b;
+      margin-bottom: 8px;
+    }
+
+    .tech-card p {
+      color: #c1d0cb;
+      font-size: 14px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about-box {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-box p {
+      color: #66756f;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #071c16;
+      color: #9cafaa;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #e3c35e;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 1000px) {
+
+      .desktop-menu {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .test-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .class-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .nav {
+        min-height: 65px;
+        padding: 9px 15px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .mobile-menu {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .hero {
+        padding: 55px 15px;
+      }
+
+      section {
+        padding: 55px 15px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .class-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-title h2 {
+        font-size: 29px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
-
-  <nav class="nav">
+  <div class="nav">
 
     <a href="/" class="logo">
-
-      <div class="logo-icon">
-        S
-      </div>
-
-      <div>
-        <div class="logo-name">
-          SUN.TEC
-        </div>
-
-        <span class="logo-sub">
-          EDUCATION & TECHNOLOGY
-        </span>
-      </div>
-
+      SUN.<span>TEC</span>
     </a>
 
+    <nav class="desktop-menu">
+      <a href="/">Home</a>
+      <a href="#tests">Online Tests</a>
+      <a href="/results.html">Results</a>
+      <a href="#classes">Classes</a>
+      <a href="/games.html">Games</a>
+      <a href="#technology">Technology</a>
+      <a href="#about">About</a>
+      <a href="#tests" class="start-btn">Start Test</a>
+    </nav>
 
-    <div class="nav-links">
-
-      <a href="/">
-        Home
-      </a>
-
-      <a href="#tests">
-        Online Tests
-      </a>
-
-      <a href="results.html">
-        Results
-      </a>
-
-      <a href="#classes">
-        Classes
-      </a>
-
-      <a href="#technology">
-        Technology
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a
-        href="science7.html"
-        class="nav-test">
-        Start Test
-      </a>
-
-    </div>
-
-
-    <button
-      id="menuButton"
-      class="menu-button"
-      type="button"
-      aria-label="Open menu">
-      ☰
-    </button>
-
-  </nav>
-
-
-  <div
-    id="mobileMenu"
-    class="mobile-menu">
-
-    <a href="/">
-      🏠 Home
-    </a>
-
-    <a href="#tests">
-      📝 Online Tests
-    </a>
-
-    <a href="results.html">
-      📊 Results
-    </a>
-
-    <a href="#classes">
-      🎓 Classes
-    </a>
-
-    <a href="#technology">
-      💻 Technology
-    </a>
-
-    <a href="#about">
-      ℹ️ About
-    </a>
-
-    <a href="science7.html">
-      🚀 Start Test
-    </a>
+    <button class="menu-btn" id="menuBtn">☰</button>
 
   </div>
 
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="#tests">Online Tests</a>
+    <a href="/results.html">Results</a>
+    <a href="#classes">Classes</a>
+    <a href="/games.html">🎮 Games</a>
+    <a href="#technology">Technology</a>
+    <a href="#about">About</a>
+    <a href="#tests">Start Test</a>
+  </div>
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
-  <div class="hero-content">
+  <div class="hero-inner">
 
-    <div class="badge">
-      DIGITAL EDUCATION • TESTS • TECHNOLOGY
+    <div>
+
+      <div class="hero-badge">
+        EDUCATION • TECHNOLOGY • INNOVATION
+      </div>
+
+      <h1>
+        Welcome to <span>SUN.TEC</span>
+      </h1>
+
+      <p>
+        A modern educational technology platform for students,
+        teachers, schools and colleges — Learn, Test, Explore and Innovate.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#tests" class="hero-btn">
+          Start Learning
+        </a>
+
+        <a href="/games.html" class="hero-btn alt">
+          🎮 Explore Games
+        </a>
+      </div>
+
     </div>
 
-    <h1>
-      Learn. Test.
-      <span>Grow.</span>
-    </h1>
+    <div class="hero-panel">
 
-    <p>
-      Welcome to SUN.TEC — a modern educational technology
-      platform for online tests, results, learning resources,
-      applications and digital tools.
-    </p>
+      <h3>🚀 SUN.TEC Platform</h3>
 
-    <div class="hero-buttons">
-
-      <button
-        class="primary"
-        onclick="goTests()">
-        📝 Explore Online Tests
-      </button>
-
-      <button
-        class="secondary"
-        onclick="location.href='results.html'">
-        📊 Check Result
-      </button>
+      <div>📚 Digital Education</div>
+      <div>📝 Online Tests</div>
+      <div>📊 Smart Results</div>
+      <div>🤖 AI Learning</div>
+      <div>🎮 Educational Games</div>
+      <div>💻 Technology & Apps</div>
 
     </div>
 
@@ -661,375 +582,269 @@ footer p{
 </section>
 
 
-<!-- ================= MAIN ================= -->
+<!-- PLATFORM -->
 
-<main class="container">
+<section>
 
+  <div class="container">
 
-  <div class="section-head">
+    <div class="section-title">
+      <h2>Explore SUN.TEC</h2>
+      <p>Everything students need in one educational platform.</p>
+    </div>
 
-    <h2>
-      Student Dashboard
-    </h2>
+    <div class="grid">
 
-    <p>
-      Everything you need in one place.
-    </p>
+      <a href="#tests" class="card">
+        <div class="card-icon">📝</div>
+        <h3>Online Tests</h3>
+        <p>Practice and attempt online educational tests.</p>
+      </a>
 
-  </div>
+      <a href="/results.html" class="card">
+        <div class="card-icon">📊</div>
+        <h3>Results</h3>
+        <p>View marks, percentage and academic performance.</p>
+      </a>
 
+      <a href="/games.html" class="card">
+        <div class="card-icon">🎮</div>
+        <h3>Games</h3>
+        <p>Discover educational and interactive digital games.</p>
+      </a>
 
-  <div class="grid">
+      <a href="#technology" class="card">
+        <div class="card-icon">💻</div>
+        <h3>Technology</h3>
+        <p>Explore software, apps, AI and digital skills.</p>
+      </a>
 
-
-    <a
-      class="card"
-      href="#tests">
-
-      <div class="icon blue">
-        📝
-      </div>
-
-      <h3>
-        Online Tests
-      </h3>
-
-      <p>
-        Take class-wise online tests and assessments.
-      </p>
-
-    </a>
-
-
-    <a
-      class="card"
-      href="results.html">
-
-      <div class="icon green">
-        📊
-      </div>
-
-      <h3>
-        Check Result
-      </h3>
-
-      <p>
-        View your marks, percentage and position.
-      </p>
-
-    </a>
-
-
-    <a
-      class="card"
-      href="#classes">
-
-      <div class="icon purple">
-        🎓
-      </div>
-
-      <h3>
-        Classes
-      </h3>
-
-      <p>
-        Explore classes and learning activities.
-      </p>
-
-    </a>
-
-
-    <a
-      class="card"
-      href="#technology">
-
-      <div class="icon orange">
-        ⚡
-      </div>
-
-      <h3>
-        Technology
-      </h3>
-
-      <p>
-        Explore digital tools, apps and technology.
-      </p>
-
-    </a>
-
+    </div>
 
   </div>
 
-
-  <!-- TESTS -->
-
-  <div
-    id="tests"
-    class="section-head">
-
-    <h2>
-      Featured Online Tests
-    </h2>
-
-    <p>
-      Available assessments on SUN.TEC.
-    </p>
-
-  </div>
+</section>
 
 
-  <div class="grid">
+<!-- TESTS -->
 
+<section class="tests" id="tests">
 
-    <a
-      class="card test-card"
-      href="science7.html">
+  <div class="container">
 
-      <div class="icon cyan">
-        🔬
-      </div>
+    <div class="section-title">
+      <h2>Featured Online Tests</h2>
+      <p>Test your knowledge with SUN.TEC.</p>
+    </div>
 
-      <div>
+    <div class="test-grid">
 
-        <h3>
-          Class 7-A General Science
-        </h3>
+      <div class="test-card">
+
+        <span class="tag">CLASS 7</span>
+
+        <h3>General Science</h3>
 
         <p>
-          Chapters 1–4 • 40 MCQs
+          Punjab Textbook Board Class 7 General Science
+          online assessment.
         </p>
 
+        <a href="/science7.html" class="test-btn">
+          Start Test →
+        </a>
+
       </div>
 
-    </a>
 
+      <div class="test-card">
 
-    <div class="card test-card">
+        <span class="tag">COMING SOON</span>
 
-      <div class="icon blue">
-        📚
-      </div>
-
-      <div>
-
-        <h3>
-          More Tests
-        </h3>
+        <h3>English Assessment</h3>
 
         <p>
-          New tests will be added here.
+          Grammar, vocabulary and textbook-based practice.
         </p>
+
+        <span class="test-btn">
+          Coming Soon
+        </span>
+
+      </div>
+
+
+      <div class="test-card">
+
+        <span class="tag">COMING SOON</span>
+
+        <h3>Mathematics</h3>
+
+        <p>
+          Interactive mathematics practice and assessments.
+        </p>
+
+        <span class="test-btn">
+          Coming Soon
+        </span>
 
       </div>
 
     </div>
 
-
   </div>
 
-
-  <!-- CLASSES -->
-
-  <div
-    id="classes"
-    class="section-head">
-
-    <h2>
-      Classes
-    </h2>
-
-    <p>
-      Select your class.
-    </p>
-
-  </div>
+</section>
 
 
-  <div class="class-grid">
+<!-- CLASSES -->
 
+<section id="classes">
 
-    <a class="class-card" href="#tests">
+  <div class="container">
 
-      <div class="class-number">
-        06
-      </div>
+    <div class="section-title">
+      <h2>Classes & Levels</h2>
+      <p>Educational resources from middle school to college level.</p>
+    </div>
 
-      <h3>
+    <div class="class-grid">
+
+      <div class="class-box">
+        <span>06</span>
         Class 6
-      </h3>
-
-      <small>
-        Tests & Learning
-      </small>
-
-    </a>
-
-
-    <a class="class-card" href="#tests">
-
-      <div class="class-number">
-        07
       </div>
 
-      <h3>
+      <div class="class-box">
+        <span>07</span>
         Class 7
-      </h3>
-
-      <small>
-        Tests & Learning
-      </small>
-
-    </a>
-
-
-    <a class="class-card" href="#tests">
-
-      <div class="class-number">
-        08
       </div>
 
-      <h3>
+      <div class="class-box">
+        <span>08</span>
         Class 8
-      </h3>
-
-      <small>
-        Tests & Learning
-      </small>
-
-    </a>
-
-
-    <a class="class-card" href="#tests">
-
-      <div class="class-number">
-        09
       </div>
 
-      <h3>
+      <div class="class-box">
+        <span>09</span>
         Class 9
-      </h3>
-
-      <small>
-        Tests & Learning
-      </small>
-
-    </a>
-
-
-    <a class="class-card" href="#tests">
-
-      <div class="class-number">
-        10
       </div>
 
-      <h3>
+      <div class="class-box">
+        <span>10</span>
         Class 10
-      </h3>
+      </div>
 
-      <small>
-        Tests & Learning
-      </small>
+      <div class="class-box">
+        <span>11</span>
+        Class 11
+      </div>
 
-    </a>
-
-
-  </div>
-
-
-  <!-- TECHNOLOGY -->
-
-  <div
-    id="technology"
-    class="featured">
-
-
-    <div class="feature-box feature-green">
-
-      <h2>
-        🚀 Digital Education
-      </h2>
-
-      <p>
-        SUN.TEC brings online assessments, results,
-        learning resources and digital education together
-        in one platform.
-      </p>
-
-      <button onclick="goTests()">
-        Explore Tests
-      </button>
+      <div class="class-box">
+        <span>12</span>
+        Class 12
+      </div>
 
     </div>
 
+  </div>
 
-    <div class="feature-box feature-purple">
+</section>
 
-      <h2>
-        🤖 Technology
-      </h2>
+
+<!-- TECHNOLOGY -->
+
+<section class="tech" id="technology">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>Education & Technology</h2>
 
       <p>
-        AI, educational apps, software and new digital
-        projects will be added to SUN.TEC.
+        Discover the future of digital learning.
       </p>
 
     </div>
 
 
+    <div class="tech-grid">
+
+      <div class="tech-card">
+        <h3>🤖 AI Education</h3>
+        <p>
+          AI-powered learning assistants and educational tools.
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <h3>📱 Apps</h3>
+        <p>
+          Useful educational and productivity applications.
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <h3>🎮 Games</h3>
+        <p>
+          Learning through interactive digital experiences.
+        </p>
+      </div>
+
+      <div class="tech-card">
+        <h3>💻 Software</h3>
+        <p>
+          Digital tools and software for students and teachers.
+        </p>
+      </div>
+
+    </div>
+
   </div>
 
+</section>
 
-  <!-- ABOUT -->
 
-  <div
-    id="about"
-    class="section-head">
+<!-- ABOUT -->
 
-    <h2>
-      About SUN.TEC
-    </h2>
+<section id="about">
 
-    <p>
-      Education and technology in one digital platform.
-    </p>
+  <div class="container">
+
+    <div class="section-title">
+      <h2>About SUN.TEC</h2>
+    </div>
+
+    <div class="about-box">
+
+      <p>
+        SUN.TEC is being developed as a universal educational
+        technology platform for schools, colleges, teachers and students.
+        The platform brings online testing, results, digital education,
+        AI learning, educational games, applications and technology
+        resources together in one modern environment.
+      </p>
+
+    </div>
 
   </div>
 
+</section>
 
-</main>
-
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
 
-  <div class="footer-inner">
+  <div>
+    <strong>SUN.TEC</strong>
+  </div>
 
-    <div>
+  <div>
+    Educational Technology Platform
+  </div>
 
-      <strong>
-        SUN.TEC
-      </strong>
-
-      <p>
-        Education & Technology Platform
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <strong>
-        Government High School Dunyapur
-      </strong>
-
-      <p>
-        Digital Education Initiative
-      </p>
-
-    </div>
-
+  <div style="margin-top:8px;">
+    © 2026 SUN.TEC — Learn • Test • Explore • Innovate
   </div>
 
 </footer>
@@ -1037,68 +852,32 @@ footer p{
 
 <script>
 
-/* MOBILE MENU */
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-const menuButton =
-  document.getElementById("menuButton");
+  menuBtn.addEventListener("click", function () {
 
-const mobileMenu =
-  document.getElementById("mobileMenu");
-
-
-menuButton.addEventListener(
-  "click",
-  function(){
-
-    const isOpen =
-      mobileMenu.style.display === "block";
-
-    mobileMenu.style.display =
-      isOpen ? "none" : "block";
-
-    menuButton.textContent =
-      isOpen ? "☰" : "✕";
-
-  }
-);
-
-
-/* CLOSE MOBILE MENU AFTER CLICK */
-
-document
-  .querySelectorAll(".mobile-menu a")
-  .forEach(function(link){
-
-    link.addEventListener(
-      "click",
-      function(){
-
-        mobileMenu.style.display = "none";
-
-        menuButton.textContent = "☰";
-
-      }
-    );
+    if (mobileMenu.style.display === "block") {
+      mobileMenu.style.display = "none";
+      menuBtn.textContent = "☰";
+    } else {
+      mobileMenu.style.display = "block";
+      menuBtn.textContent = "✕";
+    }
 
   });
 
 
-/* TESTS BUTTON */
+  document.querySelectorAll(".mobile-menu a").forEach(function(link) {
 
-function goTests(){
+    link.addEventListener("click", function() {
 
-  const section =
-    document.getElementById("tests");
+      mobileMenu.style.display = "none";
+      menuBtn.textContent = "☰";
 
-  if(section){
-
-    section.scrollIntoView({
-      behavior:"smooth"
     });
 
-  }
-
-}
+  });
 
 </script>
 
