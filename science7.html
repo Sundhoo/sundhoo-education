@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 7 Science Test | SUN.TEC</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#071b14;
+  color:#fff;
+}
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+.header{
+  text-align:center;
+  padding:25px 15px;
+  border-bottom:2px solid #d6ad45;
+}
+.logo{
+  font-size:32px;
+  font-weight:900;
+  color:#e5c15b;
+  letter-spacing:3px;
+}
+.school{
+  margin-top:8px;
+  font-size:20px;
+  font-weight:bold;
+}
+.subtitle{
+  color:#d8d8d8;
+  margin-top:5px;
+}
+.card{
+  background:#102c21;
+  border:1px solid #315744;
+  border-radius:16px;
+  padding:22px;
+  margin-top:20px;
+}
+input{
+  width:100%;
+  padding:14px;
+  margin:8px 0 15px;
+  border-radius:8px;
+  border:1px solid #557766;
+  background:#081b14;
+  color:#fff;
+  font-size:16px;
+}
+button{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:9px;
+  background:#d6ad45;
+  color:#071b14;
+  font-weight:bold;
+  font-size:17px;
+  cursor:pointer;
+  margin-top:10px;
+}
+button:hover{background:#edcf78}
+.hidden{display:none}
+.question{
+  background:#0b2118;
+  border:1px solid #315744;
+  border-radius:12px;
+  padding:18px;
+  margin:15px 0;
+}
+.question h3{
+  margin-top:0;
+  color:#e5c15b;
+  font-size:17px;
+}
+.option{
+  display:block;
+  padding:11px;
+  margin:8px 0;
+  background:#142f24;
+  border-radius:8px;
+  cursor:pointer;
+}
+.option input{
+  width:auto;
+  margin:0 8px 0 0;
+}
+.chapter{
+  color:#e5c15b;
+  margin-top:30px;
+  border-bottom:1px solid #496b59;
+  padding-bottom:8px;
+}
+.result{
+  text-align:center;
+}
+.result-box{
+  background:#fff;
+  color:#111;
+  padding:25px;
+  border-radius:10px;
+  text-align:left;
+}
+.result-box h2{
+  text-align:center;
+  color:#174d35;
+}
+.result-row{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #ddd;
+  padding:10px 0;
+}
+.big-score{
+  text-align:center;
+  font-size:32px;
+  font-weight:bold;
+  color:#174d35;
+  margin:20px 0;
+}
+.note{
+  text-align:center;
+  color:#ccc;
+  font-size:13px;
+  margin-top:15px;
+}
+
+@media print{
+  body{background:white;color:#000}
+  .header,.no-print{display:none!important}
+  .container{max-width:none;padding:0}
+  .result-box{
+    display:block!important;
+    border:2px solid #222;
+    border-radius:0;
+    margin:0;
+  }
+  .result-box h2{color:#000}
+  .result-row{border-color:#aaa}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+  <div class="logo">SUN.TEC</div>
+  <div class="school">GOVERNMENT HIGH SCHOOL DUNYAPUR</div>
+  <div class="subtitle">Class 7 — General Science Online Test</div>
+</div>
+
+<!-- START SCREEN -->
+<div id="startScreen" class="card">
+
+<h2>Class 7 General Science</h2>
+<p><b>Test:</b> Chapters 1–4</p>
+<p><b>Total Questions:</b> 40 MCQs</p>
+<p><b>Total Marks:</b> 40</p>
+
+<label>Student Name</label>
+<input id="studentName" type="text" placeholder="Enter student name">
+
+<label>Roll Number</label>
+<input id="rollNumber" type="text" placeholder="Enter roll number">
+
+<button onclick="startTest()">START TEST</button>
+
+<div class="note">
+Questions are from the first four chapters of the current Class 7 General Science syllabus.
+</div>
+
+</div>
+
+
+<!-- TEST SCREEN -->
+<div id="testScreen" class="hidden">
+
+<div class="card">
+<h2>Class 7 General Science — Test</h2>
+<p>Choose one correct answer for each question.</p>
+</div>
+
+<form id="testForm">
+
+<div class="chapter">Chapter 1 — Plant Systems</div>
+
+<div class="question">
+<h3>1. What is the main function of roots?</h3>
+<label class="option"><input type="radio" name="q1" value="A"> A. Make food</label>
+<label class="option"><input type="radio" name="q1" value="B"> B. Absorb water and minerals</label>
+<label class="option"><input type="radio" name="q1" value="C"> C. Produce seeds</label>
+<label class="option"><input type="radio" name="q1" value="D"> D. Release oxygen only</label>
+</div>
+
+<div class="question">
+<h3>2. What are the fine hair-like structures on roots called?</h3>
+<label class="option"><input type="radio" name="q2" value="A"> A. Root hairs</label>
+<label class="option"><input type="radio" name="q2" value="B"> B. Stomata</label>
+<label class="option"><input type="radio" name="q2" value="C"> C. Veins</label>
+<label class="option"><input type="radio" name="q2" value="D"> D. Petals</label>
+</div>
+
+<div class="question">
+<h3>3. Which tissue carries water from roots to leaves?</h3>
+<label class="option"><input type="radio" name="q3" value="A"> A. Phloem</label>
+<label class="option"><input type="radio" name="q3" value="B"> B. Xylem</label>
+<label class="option"><input type="radio" name="q3" value="C"> C. Epidermis</label>
+<label class="option"><input type="radio" name="q3" value="D"> D. Stomata</label>
+</div>
+
+<div class="question">
+<h3>4. Which tissue transports prepared food to other parts of a plant?</h3>
+<label class="option"><input type="radio" name="q4" value="A"> A. Xylem</label>
+<label class="option"><input type="radio" name="q4" value="B"> B. Phloem</label>
+<label class="option"><input type="radio" name="q4" value="C"> C. Root hair</label>
+<label class="option"><input type="radio" name="q4" value="D"> D. Stoma</label>
+</div>
+
+<div class="question">
+<h3>5. Which gas is taken from the air during photosynthesis?</h3>
+<label class="option"><input type="radio" name="q5" value="A"> A. Oxygen</label>
+<label class="option"><input type="radio" name="q5" value="B"> B. Nitrogen</label>
+<label class="option"><input type="radio" name="q5" value="C"> C. Carbon dioxide</label>
+<label class="option"><input type="radio" name="q5" value="D"> D. Hydrogen</label>
+</div>
+
+<div class="question">
+<h3>6. What food is produced during photosynthesis?</h3>
+<label class="option"><input type="radio" name="q6" value="A"> A. Glucose</label>
+<label class="option"><input type="radio" name="q6" value="B"> B. Protein</label>
+<label class="option"><input type="radio" name="q6" value="C"> C. Oxygen</label>
+<label class="option"><input type="radio" name="q6" value="D"> D. Nitrogen</label>
+</div>
+
+<div class="question">
+<h3>7. Which green substance is present in leaves?</h3>
+<label class="option"><input type="radio" name="q7" value="A"> A. Chlorophyll</label>
+<label class="option"><input type="radio" name="q7" value="B"> B. Haemoglobin</label>
+<label class="option"><input type="radio" name="q7" value="C"> C. Plasma</label>
+<label class="option"><input type="radio" name="q7" value="D"> D. Starch only</label>
+</div>
+
+<div class="question">
+<h3>8. What are the tiny openings on leaves called?</h3>
+<label class="option"><input type="radio" name="q8" value="A"> A. Root hairs</label>
+<label class="option"><input type="radio" name="q8" value="B"> B. Stomata</label>
+<label class="option"><input type="radio" name="q8" value="C"> C. Xylem</label>
+<label class="option"><input type="radio" name="q8" value="D"> D. Phloem</label>
+</div>
+
+<div class="question">
+<h3>9. What is the main purpose of respiration in plants?</h3>
+<label class="option"><input type="radio" name="q9" value="A"> A. To obtain energy</label>
+<label class="option"><input type="radio" name="q9" value="B"> B. To make soil</label>
+<label class="option"><input type="radio" name="q9" value="C"> C. To produce seeds only</label>
+<label class="option"><input type="radio" name="q9" value="D"> D. To absorb minerals</label>
+</div>
+
+<div class="question">
+<h3>10. What is the loss of water from aerial parts of plants called?</h3>
+<label class="option"><input type="radio" name="q10" value="A"> A. Respiration</label>
+<label class="option"><input type="radio" name="q10" value="B"> B. Photosynthesis</label>
+<label class="option"><input type="radio" name="q10" value="C"> C. Transpiration</label>
+<label class="option"><input type="radio" name="q10" value="D"> D. Digestion</label>
+</div>
+
+
+<div class="chapter">Chapter 2 — Human Respiratory and Circulatory Systems</div>
+
+<div class="question">
+<h3>11. What is the main purpose of breathing?</h3>
+<label class="option"><input type="radio" name="q11" value="A"> A. To digest food</label>
+<label class="option"><input type="radio" name="q11" value="B"> B. To exchange gases</label>
+<label class="option"><input type="radio" name="q11" value="C"> C. To produce blood</label>
+<label class="option"><input type="radio" name="q11" value="D"> D. To make bones</label>
+</div>
+
+<div class="question">
+<h3>12. Where does gas exchange take place in the lungs?</h3>
+<label class="option"><input type="radio" name="q12" value="A"> A. Trachea</label>
+<label class="option"><input type="radio" name="q12" value="B"> B. Alveoli</label>
+<label class="option"><input type="radio" name="q12" value="C"> C. Nose</label>
+<label class="option"><input type="radio" name="q12" value="D"> D. Diaphragm</label>
+</div>
+
+<div class="question">
+<h3>13. Which gas is taken into the body during breathing?</h3>
+<label class="option"><input type="radio" name="q13" value="A"> A. Carbon dioxide</label>
+<label class="option"><input type="radio" name="q13" value="B"> B. Oxygen</label>
+<label class="option"><input type="radio" name="q13" value="C"> C. Nitrogen only</label>
+<label class="option"><input type="radio" name="q13" value="D"> D. Hydrogen</label>
+</div>
+
+<div class="question">
+<h3>14. Which gas is released from the body during breathing?</h3>
+<label class="option"><input type="radio" name="q14" value="A"> A. Oxygen</label>
+<label class="option"><input type="radio" name="q14" value="B"> B. Hydrogen</label>
+<label class="option"><input type="radio" name="q14" value="C"> C. Carbon dioxide</label>
+<label class="option"><input type="radio" name="q14" value="D"> D. Helium</label>
+</div>
+
+<div class="question">
+<h3>15. What is the windpipe called?</h3>
+<label class="option"><input type="radio" name="q15" value="A"> A. Trachea</label>
+<label class="option"><input type="radio" name="q15" value="B"> B. Alveolus</label>
+<label class="option"><input type="radio" name="q15" value="C"> C. Artery</label>
+<label class="option"><input type="radio" name="q15" value="D"> D. Vein</label>
+</div>
+
+<div class="question">
+<h3>16. What is the main function of the heart?</h3>
+<label class="option"><input type="radio" name="q16" value="A"> A. Digest food</label>
+<label class="option"><input type="radio" name="q16" value="B"> B. Pump blood</label>
+<label class="option"><input type="radio" name="q16" value="C"> C. Produce oxygen</label>
+<label class="option"><input type="radio" name="q16" value="D"> D. Filter air</label>
+</div>
+
+<div class="question">
+<h3>17. Which blood cells carry oxygen?</h3>
+<label class="option"><input type="radio" name="q17" value="A"> A. White blood cells</label>
+<label class="option"><input type="radio" name="q17" value="B"> B. Red blood cells</label>
+<label class="option"><input type="radio" name="q17" value="C"> C. Platelets</label>
+<label class="option"><input type="radio" name="q17" value="D"> D. Plasma cells only</label>
+</div>
+
+<div class="question">
+<h3>18. What is the main function of white blood cells?</h3>
+<label class="option"><input type="radio" name="q18" value="A"> A. Carry oxygen</label>
+<label class="option"><input type="radio" name="q18" value="B"> B. Defend against diseases</label>
+<label class="option"><input type="radio" name="q18" value="C"> C. Carry food only</label>
+<label class="option"><input type="radio" name="q18" value="D"> D. Pump blood</label>
+</div>
+
+<div class="question">
+<h3>19. What is the main function of platelets?</h3>
+<label class="option"><input type="radio" name="q19" value="A"> A. Help blood clot</label>
+<label class="option"><input type="radio" name="q19" value="B"> B. Carry oxygen</label>
+<label class="option"><input type="radio" name="q19" value="C"> C. Fight every virus</label>
+<label class="option"><input type="radio" name="q19" value="D"> D. Digest food</label>
+</div>
+
+<div class="question">
+<h3>20. Which blood vessels carry blood away from the heart?</h3>
+<label class="option"><input type="radio" name="q20" value="A"> A. Veins</label>
+<label class="option"><input type="radio" name="q20" value="B"> B. Arteries</label>
+<label class="option"><input type="radio" name="q20" value="C"> C. Capillaries only</label>
+<label class="option"><input type="radio" name="q20" value="D"> D. Alveoli</label>
+</div>
+
+
+<div class="chapter">Chapter 3 — Immunity and Diseases</div>
+
+<div class="question">
+<h3>21. What is the body's defence system against disease called?</h3>
+<label class="option"><input type="radio" name="q21" value="A"> A. Digestive system</label>
+<label class="option"><input type="radio" name="q21" value="B"> B. Immune system</label>
+<label class="option"><input type="radio" name="q21" value="C"> C. Skeletal system</label>
+<label class="option"><input type="radio" name="q21" value="D"> D. Respiratory system</label>
+</div>
+
+<div class="question">
+<h3>22. What are disease-causing organisms called?</h3>
+<label class="option"><input type="radio" name="q22" value="A"> A. Pathogens</label>
+<label class="option"><input type="radio" name="q22" value="B"> B. Nutrients</label>
+<label class="option"><input type="radio" name="q22" value="C"> C. Enzymes</label>
+<label class="option"><input type="radio" name="q22" value="D"> D. Hormones</label>
+</div>
+
+<div class="question">
+<h3>23. Which blood cells are important in defence against disease?</h3>
+<label class="option"><input type="radio" name="q23" value="A"> A. Red blood cells</label>
+<label class="option"><input type="radio" name="q23" value="B"> B. White blood cells</label>
+<label class="option"><input type="radio" name="q23" value="C"> C. Platelets</label>
+<label class="option"><input type="radio" name="q23" value="D"> D. Plasma</label>
+</div>
+
+<div class="question">
+<h3>24. What is the purpose of a vaccine?</h3>
+<label class="option"><input type="radio" name="q24" value="A"> A. To prepare the immune system against a disease</label>
+<label class="option"><input type="radio" name="q24" value="B"> B. To increase height</label>
+<label class="option"><input type="radio" name="q24" value="C"> C. To digest food</label>
+<label class="option"><input type="radio" name="q24" value="D"> D. To replace blood</label>
+</div>
+
+<div class="question">
+<h3>25. What is an infectious disease?</h3>
+<label class="option"><input type="radio" name="q25" value="A"> A. A disease that cannot spread</label>
+<label class="option"><input type="radio" name="q25" value="B"> B. A disease that can be transmitted</label>
+<label class="option"><input type="radio" name="q25" value="C"> C. A disease caused only by injury</label>
+<label class="option"><input type="radio" name="q25" value="D"> D. A disease caused only by old age</label>
+</div>
+
+<div class="question">
+<h3>26. Washing hands regularly helps prevent disease through good:</h3>
+<label class="option"><input type="radio" name="q26" value="A"> A. Hygiene</label>
+<label class="option"><input type="radio" name="q26" value="B"> B. Digestion</label>
+<label class="option"><input type="radio" name="q26" value="C"> C. Respiration</label>
+<label class="option"><input type="radio" name="q26" value="D"> D. Circulation</label>
+</div>
+
+<div class="question">
+<h3>27. Antibiotics are commonly used to treat infections caused by:</h3>
+<label class="option"><input type="radio" name="q27" value="A"> A. Bacteria</label>
+<label class="option"><input type="radio" name="q27" value="B"> B. Stones</label>
+<label class="option"><input type="radio" name="q27" value="C"> C. Broken bones</label>
+<label class="option"><input type="radio" name="q27" value="D"> D. Lack of sleep</label>
+</div>
+
+<div class="question">
+<h3>28. Why is a balanced diet important?</h3>
+<label class="option"><input type="radio" name="q28" value="A"> A. It provides essential nutrients</label>
+<label class="option"><input type="radio" name="q28" value="B"> B. It stops breathing</label>
+<label class="option"><input type="radio" name="q28" value="C"> C. It removes bones</label>
+<label class="option"><input type="radio" name="q28" value="D"> D. It prevents all diseases completely</label>
+</div>
+
+<div class="question">
+<h3>29. Which system provides specific defence against disease?</h3>
+<label class="option"><input type="radio" name="q29" value="A"> A. Immune system</label>
+<label class="option"><input type="radio" name="q29" value="B"> B. Skeletal system</label>
+<label class="option"><input type="radio" name="q29" value="C"> C. Digestive system</label>
+<label class="option"><input type="radio" name="q29" value="D"> D. Muscular system</label>
+</div>
+
+<div class="question">
+<h3>30. Which practice helps reduce the spread of diseases?</h3>
+<label class="option"><input type="radio" name="q30" value="A"> A. Maintaining cleanliness</label>
+<label class="option"><input type="radio" name="q30" value="B"> B. Sharing dirty utensils</label>
+<label class="option"><input type="radio" name="q30" value="C"> C. Avoiding clean water</label>
+<label class="option"><input type="radio" name="q30" value="D"> D. Ignoring hygiene</label>
+</div>
+
+
+<div class="chapter">Chapter 4 — Structure of an Atom</div>
+
+<div class="question">
+<h3>31. What is the basic unit of an element?</h3>
+<label class="option"><input type="radio" name="q31" value="A"> A. Atom</label>
+<label class="option"><input type="radio" name="q31" value="B"> B. Tissue</label>
+<label class="option"><input type="radio" name="q31" value="C"> C. Organ</label>
+<label class="option"><input type="radio" name="q31" value="D"> D. Cell</label>
+</div>
+
+<div class="question">
+<h3>32. What is the central part of an atom called?</h3>
+<label class="option"><input type="radio" name="q32" value="A"> A. Electron shell</label>
+<label class="option"><input type="radio" name="q32" value="B"> B. Nucleus</label>
+<label class="option"><input type="radio" name="q32" value="C"> C. Orbit only</label>
+<label class="option"><input type="radio" name="q32" value="D"> D. Molecule</label>
+</div>
+
+<div class="question">
+<h3>33. Which particles are found in the nucleus?</h3>
+<label class="option"><input type="radio" name="q33" value="A"> A. Protons and neutrons</label>
+<label class="option"><input type="radio" name="q33" value="B"> B. Electrons only</label>
+<label class="option"><input type="radio" name="q33" value="C"> C. Electrons and photons</label>
+<label class="option"><input type="radio" name="q33" value="D"> D. Molecules only</label>
+</div>
+
+<div class="question">
+<h3>34. What charge does a proton have?</h3>
+<label class="option"><input type="radio" name="q34" value="A"> A. Positive</label>
+<label class="option"><input type="radio" name="q34" value="B"> B. Negative</label>
+<label class="option"><input type="radio" name="q34" value="C"> C. Neutral</label>
+<label class="option"><input type="radio" name="q34" value="D"> D. No mass</label>
+</div>
+
+<div class="question">
+<h3>35. What charge does an electron have?</h3>
+<label class="option"><input type="radio" name="q35" value="A"> A. Positive</label>
+<label class="option"><input type="radio" name="q35" value="B"> B. Negative</label>
+<label class="option"><input type="radio" name="q35" value="C"> C. Neutral</label>
+<label class="option"><input type="radio" name="q35" value="D"> D. Double positive</label>
+</div>
+
+<div class="question">
+<h3>36. What charge does a neutron have?</h3>
+<label class="option"><input type="radio" name="q36" value="A"> A. Positive</label>
+<label class="option"><input type="radio" name="q36" value="B"> B. Negative</label>
+<label class="option"><input type="radio" name="q36" value="C"> C. Neutral</label>
+<label class="option"><input type="radio" name="q36" value="D"> D. Double negative</label>
+</div>
+
+<div class="question">
+<h3>37. Where are electrons found in an atom?</h3>
+<label class="option"><input type="radio" name="q37" value="A"> A. Inside the proton</label>
+<label class="option"><input type="radio" name="q37" value="B"> B. Around the nucleus</label>
+<label class="option"><input type="radio" name="q37" value="C"> C. Inside the neutron</label>
+<label class="option"><input type="radio" name="q37" value="D"> D. Outside the atom only</label>
+</div>
+
+<div class="question">
+<h3>38. What does the atomic number represent?</h3>
+<label class="option"><input type="radio" name="q38" value="A"> A. Number of neutrons</label>
+<label class="option"><input type="radio" name="q38" value="B"> B. Number of protons</label>
+<label class="option"><input type="radio" name="q38" value="C"> C. Number of molecules</label>
+<label class="option"><input type="radio" name="q38" value="D"> D. Number of shells only</label>
+</div>
+
+<div class="question">
+<h3>39. A neutral atom has 8 protons. How many electrons does it have?</h3>
+<label class="option"><input type="radio" name="q39" value="A"> A. 6</label>
+<label class="option"><input type="radio" name="q39" value="B"> B. 7</label>
+<label class="option"><input type="radio" name="q39" value="C"> C. 8</label>
+<label class="option"><input type="radio" name="q39" value="D"> D. 10</label>
+</div>
+
+<div class="question">
+<h3>40. What is the mass number of an atom equal to?</h3>
+<label class="option"><input type="radio" name="q40" value="A"> A. Protons only</label>
+<label class="option"><input type="radio" name="q40" value="B"> B. Protons + neutrons</label>
+<label class="option"><input type="radio" name="q40" value="C"> C. Electrons + neutrons</label>
+<label class="option"><input type="radio" name="q40" value="D"> D. Electrons only</label>
+</div>
+
+<button type="button" onclick="submitTest()">SUBMIT TEST</button>
+
+</form>
+</div>
+
+
+<!-- RESULT SCREEN -->
+<div id="resultScreen" class="hidden">
+
+<div class="result-box">
+
+<h2>GOVERNMENT HIGH SCHOOL DUNYAPUR</h2>
+<h3 style="text-align:center">Class 7 General Science — Test Result</h3>
+
+<div class="big-score" id="scoreText"></div>
+
+<div class="result-row">
+<span><b>Roll Number</b></span>
+<span id="resultRoll"></span>
+</div>
+
+<div class="result-row">
+<span><b>Student Name</b></span>
+<span id="resultName"></span>
+</div>
+
+<div class="result-row">
+<span><b>Obtained Marks</b></span>
+<span id="resultMarks"></span>
+</div>
+
+<div class="result-row">
+<span><b>Total Marks</b></span>
+<span>40</span>
+</div>
+
+<div class="result-row">
+<span><b>Percentage</b></span>
+<span id="resultPercentage"></span>
+</div>
+
+<div class="result-row">
+<span><b>Position in Class</b></span>
+<span>—</span>
+</div>
+
+<br>
+
+<div class="no-print">
+<button onclick="window.print()">PRINT / SAVE A4 RESULT</button>
+<button onclick="location.reload()">BACK TO TEST</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const answers = {
+q1:"B", q2:"A", q3:"B", q4:"B", q5:"C",
+q6:"A", q7:"A", q8:"B", q9:"A", q10:"C",
+
+q11:"B", q12:"B", q13:"B", q14:"C", q15:"A",
+q16:"B", q17:"B", q18:"B", q19:"A", q20:"B",
+
+q21:"B", q22:"A", q23:"B", q24:"A", q25:"B",
+q26:"A", q27:"A", q28:"A", q29:"A", q30:"A",
+
+q31:"A", q32:"B", q33:"A", q34:"A", q35:"B",
+q36:"C", q37:"B", q38:"B", q39:"C", q40:"B"
+};
+
+function startTest(){
+
+  const name = document.getElementById("studentName").value.trim();
+  const roll = document.getElementById("rollNumber").value.trim();
+
+  if(!name){
+    alert("Please enter student name.");
+    return;
+  }
+
+  if(!roll){
+    alert("Please enter roll number.");
+    return;
+  }
+
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("testScreen").classList.remove("hidden");
+
+  window.scrollTo(0,0);
+}
+
+function submitTest(){
+
+  const name = document.getElementById("studentName").value.trim();
+  const roll = document.getElementById("rollNumber").value.trim();
+
+  let score = 0;
+
+  for(let i=1;i<=40;i++){
+
+    const selected = document.querySelector(
+      'input[name="q'+i+'"]:checked'
+    );
+
+    if(selected && selected.value === answers["q"+i]){
+      score++;
+    }
+  }
+
+  const percentage = (score / 40 * 100).toFixed(2);
+
+  document.getElementById("resultName").textContent = name;
+  document.getElementById("resultRoll").textContent = roll;
+  document.getElementById("resultMarks").textContent = score;
+  document.getElementById("resultPercentage").textContent = percentage + "%";
+  document.getElementById("scoreText").textContent =
+    score + " / 40";
+
+  document.getElementById("testScreen").classList.add("hidden");
+  document.getElementById("resultScreen").classList.remove("hidden");
+
+  window.scrollTo(0,0);
+}
+
+</script>
+
+</body>
+</html>
