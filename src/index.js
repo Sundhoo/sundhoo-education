@@ -1,214 +1,605 @@
+const TEST_NAME = "Class 7-A General Science";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const path = url.pathname;
 
-    // Serve files from /public
-    if (path !== "/") {
-      try {
-        const assetRequest = new Request(
-          new URL(path, request.url),
-          request
-        );
-
-        const response = await env.ASSETS.fetch(assetRequest);
-
-        if (response.status !== 404) {
-          return response;
-        }
-      } catch (error) {
-        console.log("Asset error:", error);
+    try {
+      // Save test result
+      if (
+        url.pathname === "/api/submit" &&
+        request.method === "POST"
+      ) {
+        return await submitResult(request, env);
       }
+
+      // Get one student's result
+      if (
+        url.pathname === "/api/result" &&
+        request.method === "GET"
+      ) {
+        return await getResult(url, env);
+      }
+
+      // Get all results
+      if (
+        url.pathname === "/api/results" &&
+        request.method === "GET"
+      ) {
+        return await getAllResults(env);
+      }
+
+      // Serve SUN.TEC website files
+      return await env.ASSETS.fetch(request);
+
+    } catch (error) {
+
+      console.error(error);
+
+      return json(
+        {
+          success: false,
+          error: error.message || "Server error."
+        },
+        500
+      );
     }
-
-    // SUN.TEC Home Page
-    return new Response(`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SUN.TEC — Digital Technology Platform</title>
-
-<style>
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#07130f;
-  color:#f5f1df;
-}
-
-header{
-  padding:22px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #806d32;
-}
-
-.logo{
-  font-size:30px;
-  font-weight:900;
-  color:#d7b84a;
-  letter-spacing:3px;
-}
-
-.badge{
-  color:#cfc9ad;
-  font-size:13px;
-}
-
-.hero{
-  text-align:center;
-  padding:70px 20px 50px;
-}
-
-.hero h1{
-  font-size:clamp(35px,7vw,70px);
-  margin:0;
-  color:#e2c65c;
-}
-
-.hero p{
-  max-width:700px;
-  margin:20px auto;
-  color:#bfc5b9;
-  line-height:1.7;
-}
-
-.container{
-  width:min(1100px,90%);
-  margin:auto;
-}
-
-.section-title{
-  text-align:center;
-  color:#d7b84a;
-  margin:20px 0 30px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-
-.card{
-  background:#0d2119;
-  border:1px solid #675a2d;
-  border-radius:16px;
-  padding:25px;
-  min-height:170px;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  border-color:#d7b84a;
-}
-
-.card h3{
-  color:#e1c75c;
-  margin-top:0;
-}
-
-.card p{
-  color:#adb8ae;
-  line-height:1.6;
-}
-
-.test-btn{
-  display:inline-block;
-  margin-top:12px;
-  padding:13px 18px;
-  border-radius:10px;
-  background:#d7b84a;
-  color:#07130f;
-  font-weight:800;
-  text-decoration:none;
-}
-
-footer{
-  text-align:center;
-  padding:50px 20px;
-  margin-top:60px;
-  border-top:1px solid #675a2d;
-  color:#858f86;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">SUN.TEC</div>
-  <div class="badge">DIGITAL TECHNOLOGY PLATFORM</div>
-</header>
-
-<section class="hero">
-  <h1>THE DIGITAL TECHNOLOGY PLATFORM</h1>
-  <p>
-    Apps, Games, AI, Education, Online Tests, Results,
-    Software and Digital Tools — all in one place.
-  </p>
-</section>
-
-<main class="container">
-
-<h2 class="section-title">Featured Online Test</h2>
-
-<div class="cards">
-
-<div class="card">
-  <h3>Class 7 General Science</h3>
-  <p>
-    Chapters 1–4 • 40 Multiple Choice Questions
-    • Automatic Checking • A4 Result
-  </p>
-
-  <a class="test-btn" href="/science7.html">
-    START CLASS 7 SCIENCE TEST
-  </a>
-</div>
-
-<div class="card">
-  <h3>Education</h3>
-  <p>
-    Digital educational resources and tools
-    for teachers and students.
-  </p>
-</div>
-
-<div class="card">
-  <h3>AI Tools</h3>
-  <p>
-    Smart AI-powered educational and productivity tools.
-  </p>
-</div>
-
-<div class="card">
-  <h3>Software</h3>
-  <p>
-    Useful digital software and applications.
-  </p>
-</div>
-
-</div>
-
-</main>
-
-<footer>
-  © 2026 SUN.TEC — Digital Technology Platform
-</footer>
-
-</body>
-</html>`, {
-      headers: {
-        "content-type": "text/html; charset=UTF-8"
-      }
-    });
   }
 };
+
+
+/* =========================================================
+   SUBMIT RESULT
+========================================================= */
+
+async function submitResult(request, env) {
+
+  const data = await request.json();
+
+  const name =
+    String(data.name || "").trim();
+
+  const roll =
+    String(data.roll || "").trim();
+
+  const obtained =
+    Number(data.obtained);
+
+  const total =
+    Number(data.total || 40);
+
+
+  if (!name) {
+
+    return json(
+      {
+        success: false,
+        error: "Student name is required."
+      },
+      400
+    );
+
+  }
+
+
+  if (!roll) {
+
+    return json(
+      {
+        success: false,
+        error: "Roll number is required."
+      },
+      400
+    );
+
+  }
+
+
+  if (
+    !Number.isFinite(obtained) ||
+    !Number.isFinite(total) ||
+    total <= 0 ||
+    obtained < 0 ||
+    obtained > total
+  ) {
+
+    return json(
+      {
+        success: false,
+        error: "Invalid marks."
+      },
+      400
+    );
+
+  }
+
+
+  const percentage =
+    Number(
+      ((obtained / total) * 100)
+      .toFixed(2)
+    );
+
+
+  const now =
+    new Date().toISOString();
+
+
+  /*
+    Save result.
+
+    If the same student submits again,
+    the previous result for this test/roll
+    is updated instead of creating duplicates.
+  */
+
+  await env.DB
+    .prepare(`
+      INSERT INTO results
+      (
+        test_name,
+        roll_no,
+        student_name,
+        obtained_marks,
+        total_marks,
+        percentage,
+        submitted_at
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+
+      ON CONFLICT(test_name, roll_no)
+
+      DO UPDATE SET
+
+        student_name =
+          excluded.student_name,
+
+        obtained_marks =
+          excluded.obtained_marks,
+
+        total_marks =
+          excluded.total_marks,
+
+        percentage =
+          excluded.percentage,
+
+        submitted_at =
+          excluded.submitted_at
+    `)
+    .bind(
+      TEST_NAME,
+      roll,
+      name,
+      obtained,
+      total,
+      percentage,
+      now
+    )
+    .run();
+
+
+  /*
+    Calculate class position.
+
+    Higher marks = better position.
+    Same marks = same position.
+  */
+
+  const positionRow =
+    await env.DB
+      .prepare(`
+        SELECT position
+        FROM (
+          SELECT
+            roll_no,
+
+            RANK() OVER (
+              ORDER BY obtained_marks DESC
+            ) AS position
+
+          FROM results
+
+          WHERE test_name = ?
+        )
+
+        WHERE roll_no = ?
+      `)
+      .bind(
+        TEST_NAME,
+        roll
+      )
+      .first();
+
+
+  const position =
+    positionRow
+      ? Number(positionRow.position)
+      : null;
+
+
+  return json({
+
+    success: true,
+
+    result: {
+
+      school:
+        "Government High School Dunyapur",
+
+      className:
+        "Class 7-A",
+
+      subject:
+        "General Science",
+
+      preparedBy:
+        "Maqsood Sandhu",
+
+      studentName:
+        name,
+
+      rollNo:
+        roll,
+
+      obtainedMarks:
+        obtained,
+
+      totalMarks:
+        total,
+
+      percentage:
+        percentage,
+
+      position:
+        position,
+
+      submittedAt:
+        now
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   GET ONE RESULT
+========================================================= */
+
+async function getResult(url, env) {
+
+  const roll =
+    String(
+      url.searchParams.get("roll") || ""
+    ).trim();
+
+
+  const name =
+    String(
+      url.searchParams.get("name") || ""
+    ).trim();
+
+
+  if (!roll) {
+
+    return json(
+      {
+        success: false,
+        error: "Roll number is required."
+      },
+      400
+    );
+
+  }
+
+
+  let row;
+
+
+  if (name) {
+
+    row =
+      await env.DB
+        .prepare(`
+          SELECT
+            roll_no,
+            student_name,
+            obtained_marks,
+            total_marks,
+            percentage,
+            submitted_at
+
+          FROM results
+
+          WHERE test_name = ?
+
+          AND roll_no = ?
+
+          AND LOWER(
+            TRIM(student_name)
+          )
+          =
+          LOWER(
+            TRIM(?)
+          )
+
+          LIMIT 1
+        `)
+        .bind(
+          TEST_NAME,
+          roll,
+          name
+        )
+        .first();
+
+  } else {
+
+    row =
+      await env.DB
+        .prepare(`
+          SELECT
+            roll_no,
+            student_name,
+            obtained_marks,
+            total_marks,
+            percentage,
+            submitted_at
+
+          FROM results
+
+          WHERE test_name = ?
+
+          AND roll_no = ?
+
+          LIMIT 1
+        `)
+        .bind(
+          TEST_NAME,
+          roll
+        )
+        .first();
+
+  }
+
+
+  if (!row) {
+
+    return json(
+      {
+        success: false,
+        error: "Result not found."
+      },
+      404
+    );
+
+  }
+
+
+  /*
+    Calculate current position
+  */
+
+  const positionRow =
+    await env.DB
+      .prepare(`
+        SELECT position
+
+        FROM (
+
+          SELECT
+            roll_no,
+
+            RANK() OVER (
+              ORDER BY obtained_marks DESC
+            ) AS position
+
+          FROM results
+
+          WHERE test_name = ?
+
+        )
+
+        WHERE roll_no = ?
+      `)
+      .bind(
+        TEST_NAME,
+        roll
+      )
+      .first();
+
+
+  const position =
+    positionRow
+      ? Number(positionRow.position)
+      : null;
+
+
+  return json({
+
+    success: true,
+
+    result: {
+
+      school:
+        "Government High School Dunyapur",
+
+      className:
+        "Class 7-A",
+
+      subject:
+        "General Science",
+
+      preparedBy:
+        "Maqsood Sandhu",
+
+      studentName:
+        row.student_name,
+
+      rollNo:
+        row.roll_no,
+
+      obtainedMarks:
+        Number(row.obtained_marks),
+
+      totalMarks:
+        Number(row.total_marks),
+
+      percentage:
+        Number(row.percentage),
+
+      position:
+        position,
+
+      submittedAt:
+        row.submitted_at
+
+    }
+
+  });
+
+}
+
+
+/* =========================================================
+   GET ALL RESULTS
+========================================================= */
+
+async function getAllResults(env) {
+
+  const rows =
+    await env.DB
+      .prepare(`
+        SELECT
+          roll_no,
+          student_name,
+          obtained_marks,
+          total_marks,
+          percentage,
+          submitted_at
+
+        FROM results
+
+        WHERE test_name = ?
+
+        ORDER BY
+          obtained_marks DESC,
+          student_name ASC
+      `)
+      .bind(TEST_NAME)
+      .all();
+
+
+  /*
+    Use RANK so students with equal marks
+    receive the same position.
+  */
+
+  const rankedRows =
+    await env.DB
+      .prepare(`
+        SELECT
+          roll_no,
+          RANK() OVER (
+            ORDER BY obtained_marks DESC
+          ) AS position
+
+        FROM results
+
+        WHERE test_name = ?
+      `)
+      .bind(TEST_NAME)
+      .all();
+
+
+  const positionMap =
+    new Map();
+
+
+  for (
+    const row of rankedRows.results
+  ) {
+
+    positionMap.set(
+      String(row.roll_no),
+      Number(row.position)
+    );
+
+  }
+
+
+  const results =
+    rows.results.map(row => ({
+
+      position:
+        positionMap.get(
+          String(row.roll_no)
+        ) || null,
+
+      rollNo:
+        row.roll_no,
+
+      studentName:
+        row.student_name,
+
+      obtainedMarks:
+        Number(row.obtained_marks),
+
+      totalMarks:
+        Number(row.total_marks),
+
+      percentage:
+        Number(row.percentage),
+
+      submittedAt:
+        row.submitted_at
+
+    }));
+
+
+  return json({
+
+    success: true,
+
+    test:
+      TEST_NAME,
+
+    count:
+      results.length,
+
+    results:
+      results
+
+  });
+
+}
+
+
+/* =========================================================
+   JSON RESPONSE
+========================================================= */
+
+function json(data, status = 200) {
+
+  return new Response(
+    JSON.stringify(data),
+
+    {
+      status: status,
+
+      headers: {
+
+        "content-type":
+          "application/json; charset=UTF-8",
+
+        "cache-control":
+          "no-store",
+
+        "access-control-allow-origin":
+          "*"
+
+      }
+
+    }
+  );
+
+}
