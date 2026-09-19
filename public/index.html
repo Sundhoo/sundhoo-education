@@ -7,129 +7,166 @@
 <title>SUN.TEC | Education & Technology</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
 
-:root{
-  --green:#063b2b;
-  --green2:#0b5940;
-  --gold:#d6ae45;
-  --blue:#2563eb;
-  --purple:#7c3aed;
-  --orange:#ea7b18;
-  --cyan:#0891b2;
-  --red:#dc3d52;
-  --white:#ffffff;
-  --light:#f4f7f6;
-  --text:#18231f;
-  --muted:#65736d;
-  --border:#e2e9e5;
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--light);
-  color:var(--text);
+  background:#f4f7f6;
+  color:#18231f;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
-  background:
-    linear-gradient(135deg,#043526,#087052);
-  color:white;
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:1000;
+  background:rgba(5,55,40,.97);
+  border-bottom:1px solid #c7a646;
   box-shadow:0 4px 20px rgba(0,0,0,.15);
 }
 
 .nav{
-  max-width:1180px;
+  max-width:1200px;
   margin:auto;
-  padding:15px 20px;
+  min-height:72px;
+  padding:12px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:20px;
 }
 
-.logo-area{
+/* LOGO */
+
+.logo{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:11px;
+  text-decoration:none;
+  color:white;
 }
 
 .logo-icon{
-  width:46px;
-  height:46px;
+  width:45px;
+  height:45px;
   border-radius:13px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,var(--gold),#f3d77b);
+  background:linear-gradient(135deg,#d5ad43,#f2d77d);
   color:#063b2b;
-  font-size:24px;
   font-weight:bold;
-  box-shadow:0 5px 15px rgba(0,0,0,.2);
+  font-size:23px;
 }
 
-.logo-text strong{
-  display:block;
+.logo-name{
   font-size:23px;
+  font-weight:bold;
   letter-spacing:2px;
 }
 
-.logo-text small{
-  color:#d9eee6;
-  font-size:11px;
+.logo-sub{
+  display:block;
+  font-size:10px;
+  color:#cfe4dc;
+  letter-spacing:.4px;
 }
 
-.nav-button{
-  border:1px solid rgba(255,255,255,.3);
-  background:rgba(255,255,255,.12);
-  color:white;
-  padding:10px 15px;
-  border-radius:10px;
-  cursor:pointer;
+/* DESKTOP NAV */
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.nav-links a{
+  color:#eaf4f0;
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius:8px;
+  font-size:14px;
   font-weight:bold;
 }
 
-/* HERO */
+.nav-links a:hover{
+  background:rgba(255,255,255,.12);
+  color:#f2d77d;
+}
+
+.nav-test{
+  background:#d5ad43 !important;
+  color:#073426 !important;
+}
+
+/* MOBILE BUTTON */
+
+.menu-button{
+  display:none;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.1);
+  color:white;
+  padding:10px 13px;
+  border-radius:9px;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+  display:none;
+  background:#073b2b;
+  border-top:1px solid rgba(213,173,67,.4);
+}
+
+.mobile-menu a{
+  display:block;
+  padding:15px 20px;
+  color:white;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-weight:bold;
+}
+
+.mobile-menu a:hover{
+  background:#0b5940;
+  color:#f2d77d;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-  max-width:1180px;
-  margin:25px auto 0;
+  max-width:1200px;
   width:94%;
-  border-radius:24px;
-  padding:45px 35px;
+  margin:25px auto;
+  border-radius:25px;
+  padding:50px 38px;
   color:white;
   overflow:hidden;
   position:relative;
-  background:
-    radial-gradient(circle at 90% 20%,rgba(37,99,235,.45),transparent 30%),
-    radial-gradient(circle at 10% 90%,rgba(124,58,237,.35),transparent 30%),
-    linear-gradient(135deg,#063b2b,#0b5940 55%,#174b71);
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
-}
 
-.hero:after{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border:35px solid rgba(255,255,255,.06);
-  border-radius:50%;
-  right:-70px;
-  bottom:-90px;
+  background:
+    radial-gradient(circle at 90% 15%,rgba(37,99,235,.55),transparent 28%),
+    radial-gradient(circle at 15% 90%,rgba(124,58,237,.45),transparent 30%),
+    linear-gradient(135deg,#063b2b,#087052 55%,#164f70);
+
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:700px;
+  max-width:720px;
 }
 
 .badge{
@@ -138,99 +175,92 @@ header{
   border-radius:30px;
   background:rgba(255,255,255,.13);
   border:1px solid rgba(255,255,255,.2);
-  font-size:12px;
-  margin-bottom:15px;
+  font-size:11px;
+  margin-bottom:16px;
 }
 
 .hero h1{
   margin:0;
-  font-size:clamp(34px,6vw,58px);
+  font-size:clamp(38px,7vw,62px);
   line-height:1;
 }
 
 .hero h1 span{
-  color:#f3d77b;
+  color:#f2d77d;
 }
 
 .hero p{
-  color:#e3f0eb;
+  color:#e4f1ec;
   font-size:17px;
   line-height:1.6;
-  max-width:650px;
+  max-width:680px;
 }
 
 .hero-buttons{
   display:flex;
-  gap:10px;
   flex-wrap:wrap;
-  margin-top:22px;
+  gap:10px;
+  margin-top:24px;
+}
+
+.primary,
+.secondary{
+  border:0;
+  padding:13px 20px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .primary{
-  background:var(--gold);
+  background:#d5ad43;
   color:#073426;
-  border:0;
-  padding:13px 20px;
-  border-radius:11px;
-  font-weight:bold;
-  cursor:pointer;
 }
 
 .secondary{
   background:white;
   color:#073426;
-  border:0;
-  padding:13px 20px;
-  border-radius:11px;
-  font-weight:bold;
-  cursor:pointer;
 }
 
-/* CONTAINER */
+/* ================= MAIN ================= */
 
 .container{
-  max-width:1180px;
   width:94%;
-  margin:32px auto;
+  max-width:1200px;
+  margin:35px auto;
 }
 
 .section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:15px;
-  margin:35px 0 15px;
+  margin:38px 0 17px;
 }
 
 .section-head h2{
   margin:0;
-  font-size:25px;
+  font-size:27px;
 }
 
 .section-head p{
-  margin:5px 0 0;
-  color:var(--muted);
+  margin:6px 0 0;
+  color:#65736d;
 }
 
-/* FEATURE CARDS */
+/* ================= DASHBOARD ================= */
 
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:17px;
 }
 
 .card{
   background:white;
-  border:1px solid var(--border);
+  border:1px solid #e0e8e4;
   border-radius:18px;
   padding:22px;
   text-decoration:none;
-  color:var(--text);
+  color:#18231f;
   box-shadow:0 7px 22px rgba(0,0,0,.06);
   transition:.2s;
-  position:relative;
-  overflow:hidden;
 }
 
 .card:hover{
@@ -238,42 +268,66 @@ header{
   box-shadow:0 14px 30px rgba(0,0,0,.1);
 }
 
-.card-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
 .icon{
-  width:50px;
-  height:50px;
+  width:52px;
+  height:52px;
   border-radius:15px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:25px;
+  font-size:26px;
 }
 
-.green{background:#e5f5ee;color:#087052;}
-.blue{background:#e8efff;color:#2563eb;}
-.purple{background:#f0e9ff;color:#7c3aed;}
-.orange{background:#fff0df;color:#ea7b18;}
-.cyan{background:#e0f7fb;color:#0891b2;}
-.red{background:#ffe7ea;color:#dc3d52;}
+.blue{
+  background:#e8efff;
+  color:#2563eb;
+}
+
+.green{
+  background:#e3f5ed;
+  color:#087052;
+}
+
+.purple{
+  background:#f0e8ff;
+  color:#7c3aed;
+}
+
+.orange{
+  background:#fff0df;
+  color:#ea7b18;
+}
+
+.cyan{
+  background:#e0f7fb;
+  color:#0891b2;
+}
 
 .card h3{
-  margin:18px 0 7px;
+  margin:17px 0 7px;
   font-size:18px;
 }
 
 .card p{
   margin:0;
-  color:var(--muted);
-  line-height:1.5;
+  color:#65736d;
   font-size:14px;
+  line-height:1.5;
 }
 
-/* CLASS SECTION */
+/* ================= TESTS ================= */
+
+.test-card{
+  display:flex;
+  align-items:center;
+  gap:17px;
+}
+
+.test-card .icon{
+  flex-shrink:0;
+}
+
+/* ================= CLASSES ================= */
 
 .class-grid{
   display:grid;
@@ -283,23 +337,24 @@ header{
 
 .class-card{
   background:white;
+  border:1px solid #e0e8e4;
   border-radius:17px;
   padding:20px;
   text-decoration:none;
-  color:var(--text);
-  border:1px solid var(--border);
+  color:#18231f;
   box-shadow:0 5px 18px rgba(0,0,0,.05);
   transition:.2s;
 }
 
 .class-card:hover{
   transform:translateY(-4px);
+  border-color:#d5ad43;
 }
 
 .class-number{
   font-size:30px;
   font-weight:bold;
-  color:var(--green2);
+  color:#07563e;
 }
 
 .class-card h3{
@@ -307,25 +362,23 @@ header{
 }
 
 .class-card small{
-  color:var(--muted);
+  color:#65736d;
 }
 
-/* FEATURED */
+/* ================= FEATURE ================= */
 
 .featured{
-  margin-top:30px;
+  margin-top:32px;
   display:grid;
   grid-template-columns:1.4fr 1fr;
   gap:18px;
 }
 
 .feature-box{
+  min-height:200px;
   border-radius:20px;
   padding:28px;
   color:white;
-  min-height:190px;
-  position:relative;
-  overflow:hidden;
 }
 
 .feature-box h2{
@@ -333,8 +386,16 @@ header{
 }
 
 .feature-box p{
-  color:#eef7f3;
   line-height:1.6;
+  color:#e9f5f0;
+}
+
+.feature-box button{
+  border:0;
+  padding:11px 16px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .feature-green{
@@ -345,47 +406,44 @@ header{
   background:linear-gradient(135deg,#452080,#7c3aed);
 }
 
-.feature-box button{
-  margin-top:10px;
-  border:0;
-  background:white;
-  color:#173027;
-  padding:11px 16px;
-  border-radius:9px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
-  margin-top:55px;
+  margin-top:60px;
   background:#06251b;
   color:white;
   padding:35px 20px;
 }
 
 .footer-inner{
-  max-width:1180px;
+  max-width:1200px;
   margin:auto;
   display:flex;
   justify-content:space-between;
-  gap:20px;
+  gap:25px;
   flex-wrap:wrap;
 }
 
 footer strong{
-  color:#f3d77b;
+  color:#f2d77d;
 }
 
 footer p{
-  color:#b9cec6;
+  color:#b8cec5;
   margin:8px 0 0;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
-@media(max-width:850px){
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .menu-button{
+    display:block;
+  }
 
   .grid{
     grid-template-columns:repeat(2,1fr);
@@ -401,23 +459,37 @@ footer p{
 
 }
 
-@media(max-width:550px){
+@media(max-width:560px){
 
   .nav{
-    padding:12px 15px;
+    min-height:65px;
+    padding:10px 14px;
   }
 
-  .logo-text strong{
+  .logo-icon{
+    width:40px;
+    height:40px;
+  }
+
+  .logo-name{
     font-size:20px;
   }
 
+  .logo-sub{
+    font-size:9px;
+  }
+
   .hero{
-    padding:32px 23px;
+    padding:35px 22px;
     border-radius:20px;
   }
 
   .hero h1{
-    font-size:38px;
+    font-size:40px;
+  }
+
+  .hero p{
+    font-size:15px;
   }
 
   .grid{
@@ -428,43 +500,126 @@ footer p{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .section-head{
-    display:block;
+  .container{
+    margin-top:25px;
   }
 
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
 
-  <div class="nav">
+  <nav class="nav">
 
-    <div class="logo-area">
+    <a href="/" class="logo">
 
       <div class="logo-icon">
         S
       </div>
 
-      <div class="logo-text">
-        <strong>SUN.TEC</strong>
-        <small>Education & Technology Platform</small>
+      <div>
+        <div class="logo-name">
+          SUN.TEC
+        </div>
+
+        <span class="logo-sub">
+          EDUCATION & TECHNOLOGY
+        </span>
       </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+      <a href="/">
+        Home
+      </a>
+
+      <a href="#tests">
+        Online Tests
+      </a>
+
+      <a href="results.html">
+        Results
+      </a>
+
+      <a href="#classes">
+        Classes
+      </a>
+
+      <a href="#technology">
+        Technology
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a
+        href="science7.html"
+        class="nav-test">
+        Start Test
+      </a>
 
     </div>
 
+
     <button
-      class="nav-button"
-      onclick="goTests()">
-      Online Tests
+      id="menuButton"
+      class="menu-button"
+      type="button"
+      aria-label="Open menu">
+      ☰
     </button>
+
+  </nav>
+
+
+  <div
+    id="mobileMenu"
+    class="mobile-menu">
+
+    <a href="/">
+      🏠 Home
+    </a>
+
+    <a href="#tests">
+      📝 Online Tests
+    </a>
+
+    <a href="results.html">
+      📊 Results
+    </a>
+
+    <a href="#classes">
+      🎓 Classes
+    </a>
+
+    <a href="#technology">
+      💻 Technology
+    </a>
+
+    <a href="#about">
+      ℹ️ About
+    </a>
+
+    <a href="science7.html">
+      🚀 Start Test
+    </a>
 
   </div>
 
 </header>
 
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -480,9 +635,9 @@ footer p{
     </h1>
 
     <p>
-      Welcome to SUN.TEC — a modern educational technology platform
-      for online tests, results, learning resources, applications
-      and digital tools.
+      Welcome to SUN.TEC — a modern educational technology
+      platform for online tests, results, learning resources,
+      applications and digital tools.
     </p>
 
     <div class="hero-buttons">
@@ -506,15 +661,20 @@ footer p{
 </section>
 
 
+<!-- ================= MAIN ================= -->
+
 <main class="container">
 
 
   <div class="section-head">
 
-    <div>
-      <h2>Student Dashboard</h2>
-      <p>Everything you need in one place.</p>
-    </div>
+    <h2>
+      Student Dashboard
+    </h2>
+
+    <p>
+      Everything you need in one place.
+    </p>
 
   </div>
 
@@ -526,11 +686,13 @@ footer p{
       class="card"
       href="#tests">
 
-      <div class="card-top">
-        <div class="icon blue">📝</div>
+      <div class="icon blue">
+        📝
       </div>
 
-      <h3>Online Tests</h3>
+      <h3>
+        Online Tests
+      </h3>
 
       <p>
         Take class-wise online tests and assessments.
@@ -543,14 +705,16 @@ footer p{
       class="card"
       href="results.html">
 
-      <div class="card-top">
-        <div class="icon green">📊</div>
+      <div class="icon green">
+        📊
       </div>
 
-      <h3>Check Result</h3>
+      <h3>
+        Check Result
+      </h3>
 
       <p>
-        View your saved marks, percentage and position.
+        View your marks, percentage and position.
       </p>
 
     </a>
@@ -560,14 +724,16 @@ footer p{
       class="card"
       href="#classes">
 
-      <div class="card-top">
-        <div class="icon purple">🎓</div>
+      <div class="icon purple">
+        🎓
       </div>
 
-      <h3>Classes</h3>
+      <h3>
+        Classes
+      </h3>
 
       <p>
-        Explore classes and available learning activities.
+        Explore classes and learning activities.
       </p>
 
     </a>
@@ -577,14 +743,16 @@ footer p{
       class="card"
       href="#technology">
 
-      <div class="card-top">
-        <div class="icon orange">⚡</div>
+      <div class="icon orange">
+        ⚡
       </div>
 
-      <h3>Technology</h3>
+      <h3>
+        Technology
+      </h3>
 
       <p>
-        Discover digital tools, apps and educational technology.
+        Explore digital tools, apps and technology.
       </p>
 
     </a>
@@ -593,14 +761,19 @@ footer p{
   </div>
 
 
+  <!-- TESTS -->
+
   <div
     id="tests"
     class="section-head">
 
-    <div>
-      <h2>Featured Online Tests</h2>
-      <p>Start your available assessment.</p>
-    </div>
+    <h2>
+      Featured Online Tests
+    </h2>
+
+    <p>
+      Available assessments on SUN.TEC.
+    </p>
 
   </div>
 
@@ -609,33 +782,45 @@ footer p{
 
 
     <a
-      class="card"
+      class="card test-card"
       href="science7.html">
 
-      <div class="card-top">
-        <div class="icon cyan">🔬</div>
+      <div class="icon cyan">
+        🔬
       </div>
 
-      <h3>Class 7-A</h3>
+      <div>
 
-      <p>
-        General Science — Chapters 1–4
-      </p>
+        <h3>
+          Class 7-A General Science
+        </h3>
+
+        <p>
+          Chapters 1–4 • 40 MCQs
+        </p>
+
+      </div>
 
     </a>
 
 
-    <div class="card">
+    <div class="card test-card">
 
-      <div class="card-top">
-        <div class="icon blue">📚</div>
+      <div class="icon blue">
+        📚
       </div>
 
-      <h3>More Tests</h3>
+      <div>
 
-      <p>
-        New class and board tests will appear here.
-      </p>
+        <h3>
+          More Tests
+        </h3>
+
+        <p>
+          New tests will be added here.
+        </p>
+
+      </div>
 
     </div>
 
@@ -643,14 +828,19 @@ footer p{
   </div>
 
 
+  <!-- CLASSES -->
+
   <div
     id="classes"
     class="section-head">
 
-    <div>
-      <h2>Classes</h2>
-      <p>Select your class.</p>
-    </div>
+    <h2>
+      Classes
+    </h2>
+
+    <p>
+      Select your class.
+    </p>
 
   </div>
 
@@ -659,42 +849,94 @@ footer p{
 
 
     <a class="class-card" href="#tests">
-      <div class="class-number">06</div>
-      <h3>Class 6</h3>
-      <small>Tests & Learning</small>
+
+      <div class="class-number">
+        06
+      </div>
+
+      <h3>
+        Class 6
+      </h3>
+
+      <small>
+        Tests & Learning
+      </small>
+
     </a>
 
 
     <a class="class-card" href="#tests">
-      <div class="class-number">07</div>
-      <h3>Class 7</h3>
-      <small>Tests & Learning</small>
+
+      <div class="class-number">
+        07
+      </div>
+
+      <h3>
+        Class 7
+      </h3>
+
+      <small>
+        Tests & Learning
+      </small>
+
     </a>
 
 
     <a class="class-card" href="#tests">
-      <div class="class-number">08</div>
-      <h3>Class 8</h3>
-      <small>Tests & Learning</small>
+
+      <div class="class-number">
+        08
+      </div>
+
+      <h3>
+        Class 8
+      </h3>
+
+      <small>
+        Tests & Learning
+      </small>
+
     </a>
 
 
     <a class="class-card" href="#tests">
-      <div class="class-number">09</div>
-      <h3>Class 9</h3>
-      <small>Tests & Learning</small>
+
+      <div class="class-number">
+        09
+      </div>
+
+      <h3>
+        Class 9
+      </h3>
+
+      <small>
+        Tests & Learning
+      </small>
+
     </a>
 
 
     <a class="class-card" href="#tests">
-      <div class="class-number">10</div>
-      <h3>Class 10</h3>
-      <small>Tests & Learning</small>
+
+      <div class="class-number">
+        10
+      </div>
+
+      <h3>
+        Class 10
+      </h3>
+
+      <small>
+        Tests & Learning
+      </small>
+
     </a>
 
 
   </div>
 
+
+  <!-- TECHNOLOGY -->
 
   <div
     id="technology"
@@ -703,16 +945,18 @@ footer p{
 
     <div class="feature-box feature-green">
 
-      <h2>🚀 Digital Education</h2>
+      <h2>
+        🚀 Digital Education
+      </h2>
 
       <p>
-        SUN.TEC is being developed as a central platform
-        for modern education, assessments, results and
-        digital learning tools.
+        SUN.TEC brings online assessments, results,
+        learning resources and digital education together
+        in one platform.
       </p>
 
       <button onclick="goTests()">
-        Explore Platform
+        Explore Tests
       </button>
 
     </div>
@@ -720,11 +964,13 @@ footer p{
 
     <div class="feature-box feature-purple">
 
-      <h2>🤖 Technology</h2>
+      <h2>
+        🤖 Technology
+      </h2>
 
       <p>
         AI, educational apps, software and new digital
-        projects will be added here.
+        projects will be added to SUN.TEC.
       </p>
 
     </div>
@@ -733,8 +979,27 @@ footer p{
   </div>
 
 
+  <!-- ABOUT -->
+
+  <div
+    id="about"
+    class="section-head">
+
+    <h2>
+      About SUN.TEC
+    </h2>
+
+    <p>
+      Education and technology in one digital platform.
+    </p>
+
+  </div>
+
+
 </main>
 
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -742,7 +1007,9 @@ footer p{
 
     <div>
 
-      <strong>SUN.TEC</strong>
+      <strong>
+        SUN.TEC
+      </strong>
 
       <p>
         Education & Technology Platform
@@ -750,9 +1017,12 @@ footer p{
 
     </div>
 
+
     <div>
 
-      <strong>Government High School Dunyapur</strong>
+      <strong>
+        Government High School Dunyapur
+      </strong>
 
       <p>
         Digital Education Initiative
@@ -766,6 +1036,54 @@ footer p{
 
 
 <script>
+
+/* MOBILE MENU */
+
+const menuButton =
+  document.getElementById("menuButton");
+
+const mobileMenu =
+  document.getElementById("mobileMenu");
+
+
+menuButton.addEventListener(
+  "click",
+  function(){
+
+    const isOpen =
+      mobileMenu.style.display === "block";
+
+    mobileMenu.style.display =
+      isOpen ? "none" : "block";
+
+    menuButton.textContent =
+      isOpen ? "☰" : "✕";
+
+  }
+);
+
+
+/* CLOSE MOBILE MENU AFTER CLICK */
+
+document
+  .querySelectorAll(".mobile-menu a")
+  .forEach(function(link){
+
+    link.addEventListener(
+      "click",
+      function(){
+
+        mobileMenu.style.display = "none";
+
+        menuButton.textContent = "☰";
+
+      }
+    );
+
+  });
+
+
+/* TESTS BUTTON */
 
 function goTests(){
 
