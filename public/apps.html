@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SUN.TEC — Apps</title>
+
+<meta name="description" content="SUN.TEC Apps — Discover useful educational, AI, productivity and technology applications.">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#eef8f3;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(30,120,85,.25),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(212,175,55,.12),transparent 28%),
+    linear-gradient(135deg,#04120f,#071b16 48%,#08151d);
+  min-height:100vh;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+header{
+  padding:22px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background:rgba(4,18,15,.65);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:#e5c35b;
+}
+
+.logo span{
+  color:#fff;
+}
+
+.home{
+  color:#b7c8c1;
+  text-decoration:none;
+  padding:10px 16px;
+  border:1px solid rgba(229,195,91,.25);
+  border-radius:25px;
+}
+
+.hero{
+  text-align:center;
+  padding:65px 0 40px;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid rgba(229,195,91,.35);
+  border-radius:30px;
+  color:#e5c35b;
+  background:rgba(229,195,91,.06);
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+h1{
+  margin:20px 0 12px;
+  font-size:clamp(42px,7vw,72px);
+  letter-spacing:3px;
+}
+
+.hero h1 span{
+  color:#e5c35b;
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#aebfb8;
+  font-size:17px;
+  line-height:1.7;
+}
+
+.toolbar{
+  display:flex;
+  gap:12px;
+  margin:30px 0;
+  flex-wrap:wrap;
+}
+
+.search{
+  flex:1;
+  min-width:220px;
+  padding:14px 18px;
+  border-radius:30px;
+  border:1px solid rgba(229,195,91,.25);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  outline:none;
+  font-size:15px;
+}
+
+.search::placeholder{
+  color:#899d95;
+}
+
+.filter{
+  padding:12px 18px;
+  border-radius:25px;
+  border:1px solid rgba(229,195,91,.25);
+  background:rgba(255,255,255,.06);
+  color:#e5c35b;
+  cursor:pointer;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  padding:24px;
+  min-height:210px;
+  border-radius:20px;
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.075),
+    rgba(255,255,255,.025)
+  );
+  border:1px solid rgba(255,255,255,.09);
+  transition:.25s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(229,195,91,.45);
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.icon{
+  font-size:42px;
+  margin-bottom:18px;
+}
+
+.card h2{
+  margin:0 0 8px;
+  font-size:21px;
+}
+
+.card p{
+  color:#9fb2aa;
+  line-height:1.6;
+  font-size:14px;
+  min-height:45px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 18px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#d9b84f,#f0d77c);
+  color:#071b16;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:13px;
+}
+
+footer{
+  margin-top:70px;
+  padding:30px 0;
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  color:#71847d;
+  font-size:13px;
+}
+
+@media(max-width:850px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:560px){
+  .nav{
+    flex-direction:column;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:45px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+  <a href="/" class="logo">
+    SUN<span>.</span>TEC
+  </a>
+
+  <a href="/" class="home">
+    ← Home
+  </a>
+
+</div>
+</header>
+
+<main class="container">
+
+<section class="hero">
+
+  <div class="badge">
+    SUN.TEC DIGITAL LIBRARY
+  </div>
+
+  <h1>
+    Apps
+  </h1>
+
+  <p>
+    Explore useful educational, AI, productivity and technology applications
+    developed and collected by SUN.TEC.
+  </p>
+
+</section>
+
+<section>
+
+<div class="toolbar">
+
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="Search apps..."
+  >
+
+  <button class="filter" type="button">
+    All Apps
+  </button>
+
+</div>
+
+<div id="apps" class="grid">
+
+  <article class="card" data-name="Teacher Diary">
+    <div class="icon">📔</div>
+    <h2>Teacher Diary</h2>
+    <p>
+      A digital workspace for teachers, lesson records,
+      planning and daily teaching management.
+    </p>
+    <a href="#" class="btn">Coming Soon</a>
+  </article>
+
+  <article class="card" data-name="The Monitor">
+    <div class="icon">📊</div>
+    <h2>The Monitor</h2>
+    <p>
+      Manage attendance, students, tests, results and
+      classroom records digitally.
+    </p>
+    <a href="#" class="btn">Coming Soon</a>
+  </article>
+
+  <article class="card" data-name="Sundhoo AI Tutor">
+    <div class="icon">🤖</div>
+    <h2>AI Tutor</h2>
+    <p>
+      An AI-powered learning assistant for students,
+      subjects and educational questions.
+    </p>
+    <a href="#" class="btn">Coming Soon</a>
+  </article>
+
+  <article class="card" data-name="Online Test System">
+    <div class="icon">📝</div>
+    <h2>Online Test System</h2>
+    <p>
+      Create and attempt digital tests, quizzes and
+      assessments.
+    </p>
+    <a href="#" class="btn">Coming Soon</a>
+  </article>
+
+  <article class="card" data-name="Student Results">
+    <div class="icon">🎓</div>
+    <h2>Student Results</h2>
+    <p>
+      Digital examination and test result management
+      for students and teachers.
+    </p>
+    <a href="#" class="btn">Coming Soon</a>
+  </article>
+
+  <article class="card" data-name="Teacher Planner">
+    <div class="icon">📅</div>
+    <h2>Teacher Planner</h2>
+    <p>
+      Timetable, lesson planning, notes and daily
+      teaching organization.
+    </p>
+    <a href="#" class="btn">Coming Soon</a>
+  </article>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 SUN.TEC — Technology • Education • AI • Games
+</footer>
+
+<script>
+const search = document.getElementById("search");
+const cards = document.querySelectorAll(".card");
+
+search.addEventListener("input", function(){
+
+  const value = search.value.toLowerCase().trim();
+
+  cards.forEach(function(card){
+
+    const name = card.dataset.name.toLowerCase();
+
+    card.style.display =
+      name.includes(value) ? "" : "none";
+
+  });
+
+});
+</script>
+
+</body>
+</html>
