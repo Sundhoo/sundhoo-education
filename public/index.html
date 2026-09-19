@@ -4,130 +4,435 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SUN.TEC</title>
+<title>SUN.TEC | Education & Technology</title>
 
 <style>
-
 *{
   box-sizing:border-box;
 }
 
+:root{
+  --green:#063b2b;
+  --green2:#0b5940;
+  --gold:#d6ae45;
+  --blue:#2563eb;
+  --purple:#7c3aed;
+  --orange:#ea7b18;
+  --cyan:#0891b2;
+  --red:#dc3d52;
+  --white:#ffffff;
+  --light:#f4f7f6;
+  --text:#18231f;
+  --muted:#65736d;
+  --border:#e2e9e5;
+}
+
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#061812;
-  color:#f5f0d0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--light);
+  color:var(--text);
 }
+
+/* HEADER */
 
 header{
-  background:#0b241b;
-  border-bottom:1px solid #b99a45;
-  padding:18px 20px;
+  background:
+    linear-gradient(135deg,#043526,#087052);
+  color:white;
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:100;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
 }
 
-.header-inner{
-  max-width:1100px;
+.nav{
+  max-width:1180px;
   margin:auto;
+  padding:15px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+  gap:20px;
 }
 
-.logo{
-  color:#d8b85a;
-  font-size:28px;
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-icon{
+  width:46px;
+  height:46px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--gold),#f3d77b);
+  color:#063b2b;
+  font-size:24px;
   font-weight:bold;
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.logo-text strong{
+  display:block;
+  font-size:23px;
   letter-spacing:2px;
 }
 
-.menu-btn{
-  background:#b99a45;
-  color:#061812;
-  border:0;
-  border-radius:7px;
+.logo-text small{
+  color:#d9eee6;
+  font-size:11px;
+}
+
+.nav-button{
+  border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.12);
+  color:white;
   padding:10px 15px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+  max-width:1180px;
+  margin:25px auto 0;
+  width:94%;
+  border-radius:24px;
+  padding:45px 35px;
+  color:white;
+  overflow:hidden;
+  position:relative;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(37,99,235,.45),transparent 30%),
+    radial-gradient(circle at 10% 90%,rgba(124,58,237,.35),transparent 30%),
+    linear-gradient(135deg,#063b2b,#0b5940 55%,#174b71);
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:35px solid rgba(255,255,255,.06);
+  border-radius:50%;
+  right:-70px;
+  bottom:-90px;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:700px;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:30px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.2);
+  font-size:12px;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1;
+}
+
+.hero h1 span{
+  color:#f3d77b;
+}
+
+.hero p{
+  color:#e3f0eb;
+  font-size:17px;
+  line-height:1.6;
+  max-width:650px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.primary{
+  background:var(--gold);
+  color:#073426;
+  border:0;
+  padding:13px 20px;
+  border-radius:11px;
   font-weight:bold;
   cursor:pointer;
 }
 
+.secondary{
+  background:white;
+  color:#073426;
+  border:0;
+  padding:13px 20px;
+  border-radius:11px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* CONTAINER */
+
 .container{
-  width:min(1100px,94%);
-  margin:30px auto;
+  max-width:1180px;
+  width:94%;
+  margin:32px auto;
 }
 
-.hero{
-  text-align:center;
-  padding:45px 15px;
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+  margin:35px 0 15px;
 }
 
-.hero h1{
-  font-size:42px;
-  color:#d8b85a;
-  margin:0 0 10px;
-}
-
-.hero p{
-  color:#d5d5c8;
-  font-size:17px;
+.section-head h2{
   margin:0;
-}
-
-.section-title{
-  color:#d8b85a;
-  margin:30px 0 15px;
   font-size:25px;
 }
 
+.section-head p{
+  margin:5px 0 0;
+  color:var(--muted);
+}
+
+/* FEATURE CARDS */
+
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
 }
 
 .card{
-  display:block;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
   text-decoration:none;
-  color:#f5f0d0;
-  background:#0d261d;
-  border:1px solid #315344;
-  border-radius:12px;
-  padding:25px 20px;
+  color:var(--text);
+  box-shadow:0 7px 22px rgba(0,0,0,.06);
   transition:.2s;
+  position:relative;
+  overflow:hidden;
 }
 
 .card:hover{
-  border-color:#b99a45;
-  transform:translateY(-3px);
+  transform:translateY(-5px);
+  box-shadow:0 14px 30px rgba(0,0,0,.1);
+}
+
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .icon{
-  font-size:35px;
-  margin-bottom:12px;
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
 }
 
+.green{background:#e5f5ee;color:#087052;}
+.blue{background:#e8efff;color:#2563eb;}
+.purple{background:#f0e9ff;color:#7c3aed;}
+.orange{background:#fff0df;color:#ea7b18;}
+.cyan{background:#e0f7fb;color:#0891b2;}
+.red{background:#ffe7ea;color:#dc3d52;}
+
 .card h3{
-  margin:0 0 8px;
-  color:#d8b85a;
+  margin:18px 0 7px;
+  font-size:18px;
 }
 
 .card p{
   margin:0;
-  color:#c8c8ba;
+  color:var(--muted);
   line-height:1.5;
+  font-size:14px;
 }
 
-.footer{
-  margin-top:60px;
-  padding:25px 15px;
-  text-align:center;
-  border-top:1px solid #315344;
-  color:#aaa;
+/* CLASS SECTION */
+
+.class-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
 }
 
+.class-card{
+  background:white;
+  border-radius:17px;
+  padding:20px;
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--border);
+  box-shadow:0 5px 18px rgba(0,0,0,.05);
+  transition:.2s;
+}
+
+.class-card:hover{
+  transform:translateY(-4px);
+}
+
+.class-number{
+  font-size:30px;
+  font-weight:bold;
+  color:var(--green2);
+}
+
+.class-card h3{
+  margin:5px 0;
+}
+
+.class-card small{
+  color:var(--muted);
+}
+
+/* FEATURED */
+
+.featured{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:18px;
+}
+
+.feature-box{
+  border-radius:20px;
+  padding:28px;
+  color:white;
+  min-height:190px;
+  position:relative;
+  overflow:hidden;
+}
+
+.feature-box h2{
+  margin:0 0 10px;
+}
+
+.feature-box p{
+  color:#eef7f3;
+  line-height:1.6;
+}
+
+.feature-green{
+  background:linear-gradient(135deg,#063b2b,#0b7655);
+}
+
+.feature-purple{
+  background:linear-gradient(135deg,#452080,#7c3aed);
+}
+
+.feature-box button{
+  margin-top:10px;
+  border:0;
+  background:white;
+  color:#173027;
+  padding:11px 16px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:55px;
+  background:#06251b;
+  color:white;
+  padding:35px 20px;
+}
+
+.footer-inner{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+footer strong{
+  color:#f3d77b;
+}
+
+footer p{
+  color:#b9cec6;
+  margin:8px 0 0;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .class-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .featured{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:550px){
+
+  .nav{
+    padding:12px 15px;
+  }
+
+  .logo-text strong{
+    font-size:20px;
+  }
+
+  .hero{
+    padding:32px 23px;
+    border-radius:20px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .class-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-head{
+    display:block;
+  }
+
+}
 </style>
 </head>
 
@@ -135,15 +440,24 @@ header{
 
 <header>
 
-  <div class="header-inner">
+  <div class="nav">
 
-    <div class="logo">
-      SUN.TEC
+    <div class="logo-area">
+
+      <div class="logo-icon">
+        S
+      </div>
+
+      <div class="logo-text">
+        <strong>SUN.TEC</strong>
+        <small>Education & Technology Platform</small>
+      </div>
+
     </div>
 
     <button
-      class="menu-btn"
-      onclick="scrollToTests()">
+      class="nav-button"
+      onclick="goTests()">
       Online Tests
     </button>
 
@@ -152,233 +466,319 @@ header{
 </header>
 
 
-<main class="container">
+<section class="hero">
 
+  <div class="hero-content">
 
-  <section class="hero">
+    <div class="badge">
+      DIGITAL EDUCATION • TESTS • TECHNOLOGY
+    </div>
 
     <h1>
-      SUN.TEC
+      Learn. Test.
+      <span>Grow.</span>
     </h1>
 
     <p>
-      Education • Tests • Results • Technology
+      Welcome to SUN.TEC — a modern educational technology platform
+      for online tests, results, learning resources, applications
+      and digital tools.
     </p>
 
-  </section>
+    <div class="hero-buttons">
 
+      <button
+        class="primary"
+        onclick="goTests()">
+        📝 Explore Online Tests
+      </button>
 
-  <section>
-
-    <h2 class="section-title">
-      Student Dashboard
-    </h2>
-
-    <div class="grid">
-
-
-      <a
-        class="card"
-        href="#tests">
-
-        <div class="icon">📝</div>
-
-        <h3>
-          Online Tests
-        </h3>
-
-        <p>
-          Class-wise online tests and assessments.
-        </p>
-
-      </a>
-
-
-      <a
-        class="card"
-        href="results.html">
-
-        <div class="icon">📊</div>
-
-        <h3>
-          Check Result
-        </h3>
-
-        <p>
-          Check your saved test result.
-        </p>
-
-      </a>
-
-
-      <a
-        class="card"
-        href="#classes">
-
-        <div class="icon">🎓</div>
-
-        <h3>
-          Classes
-        </h3>
-
-        <p>
-          Browse available classes and subjects.
-        </p>
-
-      </a>
-
-
-      <a
-        class="card"
-        href="#about">
-
-        <div class="icon">💻</div>
-
-        <h3>
-          SUN.TEC
-        </h3>
-
-        <p>
-          Educational technology platform.
-        </p>
-
-      </a>
+      <button
+        class="secondary"
+        onclick="location.href='results.html'">
+        📊 Check Result
+      </button>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-
-  <section id="tests">
-
-    <h2 class="section-title">
-      Online Tests
-    </h2>
-
-    <div class="grid">
+<main class="container">
 
 
-      <a
-        class="card"
-        href="science7.html">
+  <div class="section-head">
 
-        <div class="icon">🔬</div>
+    <div>
+      <h2>Student Dashboard</h2>
+      <p>Everything you need in one place.</p>
+    </div>
 
-        <h3>
-          Class 7-A
-        </h3>
+  </div>
 
-        <p>
-          General Science — Chapters 1–4
-        </p>
 
-      </a>
+  <div class="grid">
 
+
+    <a
+      class="card"
+      href="#tests">
+
+      <div class="card-top">
+        <div class="icon blue">📝</div>
+      </div>
+
+      <h3>Online Tests</h3>
+
+      <p>
+        Take class-wise online tests and assessments.
+      </p>
+
+    </a>
+
+
+    <a
+      class="card"
+      href="results.html">
+
+      <div class="card-top">
+        <div class="icon green">📊</div>
+      </div>
+
+      <h3>Check Result</h3>
+
+      <p>
+        View your saved marks, percentage and position.
+      </p>
+
+    </a>
+
+
+    <a
+      class="card"
+      href="#classes">
+
+      <div class="card-top">
+        <div class="icon purple">🎓</div>
+      </div>
+
+      <h3>Classes</h3>
+
+      <p>
+        Explore classes and available learning activities.
+      </p>
+
+    </a>
+
+
+    <a
+      class="card"
+      href="#technology">
+
+      <div class="card-top">
+        <div class="icon orange">⚡</div>
+      </div>
+
+      <h3>Technology</h3>
+
+      <p>
+        Discover digital tools, apps and educational technology.
+      </p>
+
+    </a>
+
+
+  </div>
+
+
+  <div
+    id="tests"
+    class="section-head">
+
+    <div>
+      <h2>Featured Online Tests</h2>
+      <p>Start your available assessment.</p>
+    </div>
+
+  </div>
+
+
+  <div class="grid">
+
+
+    <a
+      class="card"
+      href="science7.html">
+
+      <div class="card-top">
+        <div class="icon cyan">🔬</div>
+      </div>
+
+      <h3>Class 7-A</h3>
+
+      <p>
+        General Science — Chapters 1–4
+      </p>
+
+    </a>
+
+
+    <div class="card">
+
+      <div class="card-top">
+        <div class="icon blue">📚</div>
+      </div>
+
+      <h3>More Tests</h3>
+
+      <p>
+        New class and board tests will appear here.
+      </p>
 
     </div>
 
-  </section>
+
+  </div>
 
 
+  <div
+    id="classes"
+    class="section-head">
 
-  <section id="classes">
+    <div>
+      <h2>Classes</h2>
+      <p>Select your class.</p>
+    </div>
 
-    <h2 class="section-title">
-      Classes
-    </h2>
-
-    <div class="grid">
-
-
-      <div class="card">
-
-        <div class="icon">7️⃣</div>
-
-        <h3>
-          Class 7-A
-        </h3>
-
-        <p>
-          General Science test available.
-        </p>
-
-      </div>
+  </div>
 
 
-      <div class="card">
-
-        <div class="icon">8️⃣</div>
-
-        <h3>
-          Class 8
-        </h3>
-
-        <p>
-          Tests will be added soon.
-        </p>
-
-      </div>
+  <div class="class-grid">
 
 
-      <div class="card">
-
-        <div class="icon">9️⃣</div>
-
-        <h3>
-          Class 9
-        </h3>
-
-        <p>
-          Tests will be added soon.
-        </p>
-
-      </div>
+    <a class="class-card" href="#tests">
+      <div class="class-number">06</div>
+      <h3>Class 6</h3>
+      <small>Tests & Learning</small>
+    </a>
 
 
-      <div class="card">
+    <a class="class-card" href="#tests">
+      <div class="class-number">07</div>
+      <h3>Class 7</h3>
+      <small>Tests & Learning</small>
+    </a>
 
-        <div class="icon">🔟</div>
 
-        <h3>
-          Class 10
-        </h3>
+    <a class="class-card" href="#tests">
+      <div class="class-number">08</div>
+      <h3>Class 8</h3>
+      <small>Tests & Learning</small>
+    </a>
 
-        <p>
-          Tests will be added soon.
-        </p>
 
-      </div>
+    <a class="class-card" href="#tests">
+      <div class="class-number">09</div>
+      <h3>Class 9</h3>
+      <small>Tests & Learning</small>
+    </a>
 
+
+    <a class="class-card" href="#tests">
+      <div class="class-number">10</div>
+      <h3>Class 10</h3>
+      <small>Tests & Learning</small>
+    </a>
+
+
+  </div>
+
+
+  <div
+    id="technology"
+    class="featured">
+
+
+    <div class="feature-box feature-green">
+
+      <h2>🚀 Digital Education</h2>
+
+      <p>
+        SUN.TEC is being developed as a central platform
+        for modern education, assessments, results and
+        digital learning tools.
+      </p>
+
+      <button onclick="goTests()">
+        Explore Platform
+      </button>
 
     </div>
 
-  </section>
+
+    <div class="feature-box feature-purple">
+
+      <h2>🤖 Technology</h2>
+
+      <p>
+        AI, educational apps, software and new digital
+        projects will be added here.
+      </p>
+
+    </div>
+
+
+  </div>
 
 
 </main>
 
 
-<footer class="footer">
+<footer>
 
-  SUN.TEC — Educational Technology Platform
+  <div class="footer-inner">
 
-  <br><br>
+    <div>
 
-  Government High School Dunyapur
+      <strong>SUN.TEC</strong>
+
+      <p>
+        Education & Technology Platform
+      </p>
+
+    </div>
+
+    <div>
+
+      <strong>Government High School Dunyapur</strong>
+
+      <p>
+        Digital Education Initiative
+      </p>
+
+    </div>
+
+  </div>
 
 </footer>
 
 
 <script>
 
-function scrollToTests(){
+function goTests(){
 
-  document
-    .getElementById("tests")
-    .scrollIntoView({
+  const section =
+    document.getElementById("tests");
+
+  if(section){
+
+    section.scrollIntoView({
       behavior:"smooth"
     });
+
+  }
 
 }
 
