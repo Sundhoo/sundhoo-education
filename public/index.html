@@ -35,7 +35,7 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(6,24,19,.94);
+  background:rgba(6,24,19,.96);
   border-bottom:1px solid rgba(218,180,64,.35);
   backdrop-filter:blur(14px);
 }
@@ -44,21 +44,37 @@ header{
   max-width:1250px;
   margin:auto;
   min-height:72px;
-  padding:10px 20px;
+  padding:9px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
-.logo{
-  font-size:29px;
-  font-weight:900;
-  letter-spacing:2px;
-  color:#fff;
-  text-shadow:0 3px 12px rgba(0,0,0,.35);
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  min-width:170px;
 }
 
-.logo span{
+.brand-logo{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  display:block;
+  filter:
+    drop-shadow(0 3px 8px rgba(0,0,0,.35))
+    drop-shadow(0 0 10px rgba(218,180,64,.12));
+}
+
+.brand-name{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:2px;
+  color:white;
+}
+
+.brand-name span{
   color:#e3bd4b;
 }
 
@@ -140,6 +156,29 @@ header{
 .hero-content{
   position:relative;
   z-index:5;
+}
+
+.hero-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.hero-brand img{
+  width:78px;
+  height:78px;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 7px 18px rgba(0,0,0,.35))
+    drop-shadow(0 0 18px rgba(225,190,76,.18));
+}
+
+.hero-brand-text{
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:#e9d06a;
 }
 
 .badge{
@@ -334,29 +373,42 @@ header{
 .card-test{
   top:65px;
   right:10px;
-  animation:float 4.5s ease-in-out infinite;
+  animation:floatCard 4.5s ease-in-out infinite;
 }
 
 .card-ai{
   bottom:70px;
   left:5px;
-  animation:float 5.5s ease-in-out infinite reverse;
+  animation:floatCard 5.5s ease-in-out infinite reverse;
 }
 
 .card-game{
   bottom:25px;
   right:40px;
-  animation:float 4s ease-in-out infinite;
+  animation:floatCard 4s ease-in-out infinite;
 }
 
 @keyframes float{
-  0%,100%{transform:translateY(0) rotateX(-12deg) rotateY(-28deg) rotateZ(4deg);}
-  50%{transform:translateY(-18px) rotateX(-10deg) rotateY(-24deg) rotateZ(4deg);}
+  0%,100%{
+    transform:translateY(0) rotateX(-12deg) rotateY(-28deg) rotateZ(4deg);
+  }
+  50%{
+    transform:translateY(-18px) rotateX(-10deg) rotateY(-24deg) rotateZ(4deg);
+  }
+}
+
+@keyframes floatCard{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-13px);}
 }
 
 @keyframes orbit{
-  0%{transform:rotate(0deg) translateX(135px) rotate(0deg);}
-  100%{transform:rotate(360deg) translateX(135px) rotate(-360deg);}
+  0%{
+    transform:rotate(0deg) translateX(135px) rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg) translateX(135px) rotate(-360deg);
+  }
 }
 
 /* ================= SECTIONS ================= */
@@ -592,8 +644,19 @@ footer{
   padding:38px 20px;
 }
 
+.footer-logo{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  margin-bottom:10px;
+  filter:drop-shadow(0 4px 12px rgba(218,180,64,.15));
+}
+
 footer strong{
+  display:block;
   color:#e3c35e;
+  font-size:22px;
+  letter-spacing:2px;
 }
 
 /* ================= MOBILE ================= */
@@ -638,11 +701,20 @@ footer strong{
 
   .nav{
     min-height:65px;
-    padding:9px 15px;
+    padding:8px 15px;
   }
 
-  .logo{
-    font-size:23px;
+  .brand{
+    gap:8px;
+  }
+
+  .brand-logo{
+    width:42px;
+    height:42px;
+  }
+
+  .brand-name{
+    font-size:21px;
   }
 
   section{
@@ -654,7 +726,16 @@ footer strong{
   }
 
   .hero-inner{
-    padding:55px 15px 40px;
+    padding:50px 15px 40px;
+  }
+
+  .hero-brand img{
+    width:62px;
+    height:62px;
+  }
+
+  .hero-brand-text{
+    font-size:15px;
   }
 
   .hero h1{
@@ -701,34 +782,66 @@ footer strong{
 
   <div class="nav">
 
-    <a href="/" class="logo">
-      SUN.<span>TEC</span>
+    <a href="/" class="brand">
+
+      <img
+        src="/suntec-logo.png"
+        alt="SUN.TEC Logo"
+        class="brand-logo"
+      >
+
+      <div class="brand-name">
+        SUN.<span>TEC</span>
+      </div>
+
     </a>
 
     <nav class="desktop-menu">
+
       <a href="/">Home</a>
+
       <a href="#tests">Online Tests</a>
+
       <a href="/results.html">Results</a>
+
       <a href="#classes">Classes</a>
+
       <a href="/games.html">Games</a>
+
       <a href="#technology">Technology</a>
+
       <a href="#about">About</a>
-      <a href="#tests" class="start-btn">Start Test</a>
+
+      <a href="#tests" class="start-btn">
+        Start Test
+      </a>
+
     </nav>
 
-    <button class="menu-btn" id="menuBtn">☰</button>
+    <button class="menu-btn" id="menuBtn">
+      ☰
+    </button>
 
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
+
     <a href="/">Home</a>
+
     <a href="#tests">Online Tests</a>
+
     <a href="/results.html">Results</a>
+
     <a href="#classes">Classes</a>
+
     <a href="/games.html">🎮 Games</a>
+
     <a href="#technology">Technology</a>
+
     <a href="#about">About</a>
+
     <a href="#tests">Start Test</a>
+
   </div>
 
 </header>
@@ -741,6 +854,19 @@ footer strong{
   <div class="hero-inner">
 
     <div class="hero-content">
+
+      <div class="hero-brand">
+
+        <img
+          src="/suntec-logo.png"
+          alt="SUN.TEC"
+        >
+
+        <div class="hero-brand-text">
+          EDUCATION • AI • TECHNOLOGY
+        </div>
+
+      </div>
 
       <div class="badge">
         EDUCATION • TECHNOLOGY • AI • INNOVATION
@@ -785,38 +911,48 @@ footer strong{
       <div class="cube">
 
         <div class="face front">
+
           <div class="cube-text">
             SUN.TEC
             <small>LEARN</small>
           </div>
+
         </div>
 
         <div class="face back">
+
           <div class="cube-text">
             AI
             <small>SMART</small>
           </div>
+
         </div>
 
         <div class="face right">
+
           <div class="cube-text">
             TEST
             <small>ASSESS</small>
           </div>
+
         </div>
 
         <div class="face left">
+
           <div class="cube-text">
             GAME
             <small>PLAY</small>
           </div>
+
         </div>
 
         <div class="face top">
+
           <div class="cube-text">
             TECH
             <small>CREATE</small>
           </div>
+
         </div>
 
         <div class="face bottom"></div>
@@ -858,7 +994,6 @@ footer strong{
 
     </div>
 
-
     <div class="grid">
 
       <a href="#tests" class="card-3d">
@@ -873,7 +1008,6 @@ footer strong{
 
       </a>
 
-
       <a href="/results.html" class="card-3d">
 
         <div class="icon-3d">📊</div>
@@ -886,7 +1020,6 @@ footer strong{
 
       </a>
 
-
       <a href="/games.html" class="card-3d">
 
         <div class="icon-3d">🎮</div>
@@ -898,7 +1031,6 @@ footer strong{
         </p>
 
       </a>
-
 
       <a href="#technology" class="card-3d">
 
@@ -935,14 +1067,17 @@ footer strong{
 
     </div>
 
-
     <div class="test-grid">
 
       <div class="test-card">
 
-        <span class="tag">CLASS 7</span>
+        <span class="tag">
+          CLASS 7
+        </span>
 
-        <h3>General Science</h3>
+        <h3>
+          General Science
+        </h3>
 
         <p>
           Punjab Textbook Board Class 7 General Science
@@ -955,12 +1090,15 @@ footer strong{
 
       </div>
 
-
       <div class="test-card">
 
-        <span class="tag">COMING SOON</span>
+        <span class="tag">
+          COMING SOON
+        </span>
 
-        <h3>English Assessment</h3>
+        <h3>
+          English Assessment
+        </h3>
 
         <p>
           Grammar, vocabulary and textbook-based practice.
@@ -972,12 +1110,15 @@ footer strong{
 
       </div>
 
-
       <div class="test-card">
 
-        <span class="tag">COMING SOON</span>
+        <span class="tag">
+          COMING SOON
+        </span>
 
-        <h3>Mathematics</h3>
+        <h3>
+          Mathematics
+        </h3>
 
         <p>
           Interactive mathematics practice and assessment.
@@ -1011,7 +1152,6 @@ footer strong{
       </p>
 
     </div>
-
 
     <div class="class-grid">
 
@@ -1073,14 +1213,17 @@ footer strong{
 
     </div>
 
-
     <div class="tech-grid">
 
       <div class="tech-card">
 
-        <div class="tech-icon">🤖</div>
+        <div class="tech-icon">
+          🤖
+        </div>
 
-        <h3>AI Education</h3>
+        <h3>
+          AI Education
+        </h3>
 
         <p>
           AI-powered learning assistants and educational tools.
@@ -1088,12 +1231,15 @@ footer strong{
 
       </div>
 
-
       <div class="tech-card">
 
-        <div class="tech-icon">📱</div>
+        <div class="tech-icon">
+          📱
+        </div>
 
-        <h3>Apps</h3>
+        <h3>
+          Apps
+        </h3>
 
         <p>
           Educational and productivity applications.
@@ -1101,12 +1247,15 @@ footer strong{
 
       </div>
 
-
       <div class="tech-card">
 
-        <div class="tech-icon">🎮</div>
+        <div class="tech-icon">
+          🎮
+        </div>
 
-        <h3>Games</h3>
+        <h3>
+          Games
+        </h3>
 
         <p>
           Learning through interactive digital experiences.
@@ -1114,12 +1263,15 @@ footer strong{
 
       </div>
 
-
       <div class="tech-card">
 
-        <div class="tech-icon">💻</div>
+        <div class="tech-icon">
+          💻
+        </div>
 
-        <h3>Software</h3>
+        <h3>
+          Software
+        </h3>
 
         <p>
           Digital tools for students and teachers.
@@ -1141,7 +1293,11 @@ footer strong{
   <div class="container">
 
     <div class="section-title">
-      <h2>About SUN.TEC</h2>
+
+      <h2>
+        About SUN.TEC
+      </h2>
+
     </div>
 
     <div class="about-box">
@@ -1161,9 +1317,19 @@ footer strong{
 </section>
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
-  <strong>SUN.TEC</strong>
+  <img
+    src="/suntec-logo.png"
+    alt="SUN.TEC Logo"
+    class="footer-logo"
+  >
+
+  <strong>
+    SUN.TEC
+  </strong>
 
   <div>
     Educational Technology Platform
@@ -1178,8 +1344,11 @@ footer strong{
 
 <script>
 
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const mobileMenu =
+  document.getElementById("mobileMenu");
 
 menuBtn.addEventListener("click",function(){
 
@@ -1197,16 +1366,18 @@ menuBtn.addEventListener("click",function(){
 
 });
 
-document.querySelectorAll(".mobile-menu a").forEach(function(link){
+document
+  .querySelectorAll(".mobile-menu a")
+  .forEach(function(link){
 
-  link.addEventListener("click",function(){
+    link.addEventListener("click",function(){
 
-    mobileMenu.style.display="none";
-    menuBtn.textContent="☰";
+      mobileMenu.style.display="none";
+      menuBtn.textContent="☰";
+
+    });
 
   });
-
-});
 
 </script>
 
