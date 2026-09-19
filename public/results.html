@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SUN.TEC Results</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#071b14;
+  color:#f5f0d0;
+}
+
+.container{
+  width:min(1100px,94%);
+  margin:30px auto;
+}
+
+.header{
+  text-align:center;
+  padding:25px 15px;
+  border-bottom:1px solid #b99a45;
+}
+
+.header h1{
+  margin:0;
+  color:#d8b85a;
+  font-size:32px;
+}
+
+.header p{
+  margin:8px 0 0;
+  color:#d9d9c7;
+}
+
+.controls{
+  margin:20px 0;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+input{
+  flex:1;
+  min-width:220px;
+  padding:13px;
+  border-radius:8px;
+  border:1px solid #b99a45;
+  background:#102a21;
+  color:white;
+  font-size:16px;
+}
+
+button{
+  padding:13px 20px;
+  border:0;
+  border-radius:8px;
+  background:#b99a45;
+  color:#071b14;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.status{
+  margin:15px 0;
+  color:#d8b85a;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  border:1px solid #315344;
+  border-radius:10px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:700px;
+}
+
+th{
+  background:#b99a45;
+  color:#071b14;
+  padding:13px;
+}
+
+td{
+  padding:12px;
+  border-bottom:1px solid #315344;
+  text-align:center;
+}
+
+tr:nth-child(even){
+  background:#0d261d;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>SUN.TEC</h1>
+    <p>Government High School Dunyapur — Test Results</p>
+  </div>
+
+  <div class="controls">
+
+    <input
+      id="search"
+      type="text"
+      placeholder="Search by name or roll number"
+    >
+
+    <button id="refresh">
+      Refresh Results
+    </button>
+
+  </div>
+
+  <div id="status" class="status">
+    Loading results...
+  </div>
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Roll No.</th>
+          <th>Student Name</th>
+          <th>Marks</th>
+          <th>Total</th>
+          <th>Percentage</th>
+          <th>Submitted</th>
+        </tr>
+      </thead>
+
+      <tbody id="resultsBody">
+
+        <tr>
+          <td colspan="7" class="empty">
+            Loading...
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+<script>
+
+const API_URL = "/api/results";
+
+let allResults = [];
+
+
+/* =========================
+   LOAD RESULTS
+========================= */
+
+async function loadResults(){
+
+  const status =
+    document.getElementById("status");
+
+  const body =
+    document.getElementById("resultsBody");
+
+  status.textContent =
+    "Loading results...";
+
+  try{
+
+    const response =
+      await fetch(API_URL, {
+        cache:"no-store"
+      });
+
+    const data =
+      await response.json();
+
+    if(!response.ok || !data.success){
+
+      throw new Error(
+        data.error || "Unable to load results."
+      );
+
+    }
+
+    allResults =
+      Array.isArray(data.results)
+      ? data.results
+      : [];
+
+    renderResults(allResults);
+
+    status.textContent =
+      `Total Results: ${allResults.length}`;
+
+  }catch(error){
+
+    console.error(error);
+
+    status.textContent =
+      "Unable to load results.";
+
+    body.innerHTML = `
+      <tr>
+        <td colspan="7" class="empty">
+          ${escapeHtml(error.message)}
+        </td>
+      </tr>
+    `;
+
+  }
+
+}
+
+
+/* =========================
+   DISPLAY RESULTS
+========================= */
+
+function renderResults(results){
+
+  const body =
+    document.getElementById("resultsBody");
+
+  if(!results.length){
+
+    body.innerHTML = `
+      <tr>
+        <td colspan="7" class="empty">
+          No results found.
+        </td>
+      </tr>
+    `;
+
+    return;
+
+  }
+
+  body.innerHTML =
+    results.map(result => `
+
+      <tr>
+
+        <td>
+          ${result.position ?? "—"}
+        </td>
+
+        <td>
+          ${escapeHtml(result.rollNo)}
+        </td>
+
+        <td>
+          ${escapeHtml(result.studentName)}
+        </td>
+
+        <td>
+          ${result.obtainedMarks}
+        </td>
+
+        <td>
+          ${result.totalMarks}
+        </td>
+
+        <td>
+          ${result.percentage}%
+        </td>
+
+        <td>
+          ${formatDate(result.submittedAt)}
+        </td>
+
+      </tr>
+
+    `).join("");
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+document
+  .getElementById("search")
+  .addEventListener("input", function(){
+
+    const query =
+      this.value
+        .trim()
+        .toLowerCase();
+
+    if(!query){
+
+      renderResults(allResults);
+
+      document
+        .getElementById("status")
+        .textContent =
+        `Total Results: ${allResults.length}`;
+
+      return;
+
+    }
+
+    const filtered =
+      allResults.filter(result => {
+
+        const name =
+          String(result.studentName || "")
+            .toLowerCase();
+
+        const roll =
+          String(result.rollNo || "")
+            .toLowerCase();
+
+        return (
+          name.includes(query) ||
+          roll.includes(query)
+        );
+
+      });
+
+    renderResults(filtered);
+
+    document
+      .getElementById("status")
+      .textContent =
+      `Found: ${filtered.length}`;
+
+  });
+
+
+/* =========================
+   REFRESH
+========================= */
+
+document
+  .getElementById("refresh")
+  .addEventListener(
+    "click",
+    loadResults
+  );
+
+
+/* =========================
+   DATE FORMAT
+========================= */
+
+function formatDate(value){
+
+  if(!value){
+    return "—";
+  }
+
+  const date =
+    new Date(value);
+
+  if(
+    Number.isNaN(
+      date.getTime()
+    )
+  ){
+
+    return "—";
+
+  }
+
+  return date.toLocaleString();
+
+}
+
+
+/* =========================
+   HTML SAFETY
+========================= */
+
+function escapeHtml(value){
+
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadResults();
+
+</script>
+
+</body>
+</html>
