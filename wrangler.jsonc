@@ -2,8 +2,17 @@
   "name": "suntec",
   "main": "src/index.js",
   "compatibility_date": "2026-09-19",
+
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"
-  }
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "suntec-school",
+      "database_id": "2b309e93-9045-47b9-8a2e-9969abef854d"
+    }
+  ]
 }
