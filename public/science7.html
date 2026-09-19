@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Class 7 General Science Test — SUN.TEC</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -107,6 +110,11 @@ button:hover{
   background:#ecd16c;
 }
 
+button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
 .start-btn{
   width:100%;
   margin-top:25px;
@@ -140,6 +148,7 @@ button:hover{
   border:1px solid #344635;
   border-radius:9px;
   cursor:pointer;
+  transition:.2s;
 }
 
 .option:hover{
@@ -149,6 +158,29 @@ button:hover{
 .option input{
   width:auto;
   margin-right:8px;
+  padding:0;
+}
+
+.option.correct{
+  background:#123d24;
+  border-color:#35c76f;
+  color:#8ff0b5;
+}
+
+.option.wrong{
+  background:#4a1818;
+  border-color:#ff5b5b;
+  color:#ffb0b0;
+}
+
+.option.correct-answer{
+  box-shadow:0 0 0 1px #35c76f inset;
+}
+
+.feedback{
+  display:inline-block;
+  margin-left:8px;
+  font-weight:900;
 }
 
 .submit{
@@ -197,6 +229,12 @@ button:hover{
   font-weight:700;
 }
 
+.success{
+  color:#8ff0b5;
+  margin-top:12px;
+  font-weight:700;
+}
+
 .footer{
   text-align:center;
   color:#7f8b82;
@@ -204,7 +242,28 @@ button:hover{
   border-top:1px solid #33422f;
 }
 
+@media(max-width:600px){
+
+  .panel{
+    padding:18px;
+  }
+
+  h1{
+    font-size:24px;
+  }
+
+  .question{
+    padding:15px;
+  }
+
+  .question-title{
+    font-size:16px;
+  }
+
+}
+
 @media print{
+
   body{
     background:white;
     color:black;
@@ -245,13 +304,21 @@ button:hover{
 
 <header>
   <div class="logo">SUN.TEC</div>
-  <div class="school">Government High School Dunyapur</div>
-  <div class="subtitle">Class 7 General Science — Chapters 1 to 4</div>
+
+  <div class="school">
+    Government High School Dunyapur
+  </div>
+
+  <div class="subtitle">
+    Class 7 General Science — Chapters 1 to 4
+  </div>
 </header>
+
 
 <div class="container">
 
 <!-- START SCREEN -->
+
 <section id="startArea" class="panel">
 
 <h1>Class 7 General Science Test</h1>
@@ -263,15 +330,35 @@ Automatic Checking<br>
 A4 Printable Result
 </p>
 
-<label for="studentName">Student Name *</label>
-<input id="studentName" type="text" autocomplete="name" placeholder="Enter student name">
+<label for="studentName">
+Student Name *
+</label>
 
-<label for="rollNumber">Roll Number *</label>
-<input id="rollNumber" type="text" inputmode="numeric" placeholder="Enter roll number">
+<input
+  id="studentName"
+  type="text"
+  autocomplete="name"
+  placeholder="Enter student name"
+>
+
+<label for="rollNumber">
+Roll Number *
+</label>
+
+<input
+  id="rollNumber"
+  type="text"
+  inputmode="numeric"
+  placeholder="Enter roll number"
+>
 
 <div id="startError" class="error"></div>
 
-<button class="start-btn" id="startBtn">
+<button
+  class="start-btn"
+  id="startBtn"
+  type="button"
+>
 START TEST
 </button>
 
@@ -279,6 +366,7 @@ START TEST
 
 
 <!-- TEST -->
+
 <section id="testArea" class="panel hidden">
 
 <h1>Class 7 General Science</h1>
@@ -293,7 +381,11 @@ Answer all 40 questions. Select one option for each question.
 
 <div id="submitError" class="error"></div>
 
-<button type="submit" class="submit">
+<button
+  type="submit"
+  class="submit"
+  id="submitBtn"
+>
 SUBMIT TEST
 </button>
 
@@ -303,6 +395,7 @@ SUBMIT TEST
 
 
 <!-- RESULT -->
+
 <section id="resultArea" class="panel hidden">
 
 <div class="result">
@@ -314,6 +407,21 @@ SUBMIT TEST
 <tr>
 <td>Government High School</td>
 <td>Dunyapur</td>
+</tr>
+
+<tr>
+<td>Class</td>
+<td>7-A</td>
+</tr>
+
+<tr>
+<td>Subject</td>
+<td>General Science</td>
+</tr>
+
+<tr>
+<td>Prepared By</td>
+<td>Maqsood Sandhu</td>
 </tr>
 
 <tr>
@@ -348,7 +456,13 @@ SUBMIT TEST
 
 </table>
 
-<button class="print-btn" onclick="window.print()">
+<div id="saveMessage" class="success"></div>
+
+<button
+  class="print-btn"
+  type="button"
+  onclick="window.print()"
+>
 PRINT A4 RESULT
 </button>
 
@@ -357,6 +471,7 @@ PRINT A4 RESULT
 </section>
 
 </div>
+
 
 <div class="footer">
 © 2026 SUN.TEC — Digital Technology Platform
@@ -367,97 +482,308 @@ PRINT A4 RESULT
 
 const questions = [
 
-["What is the main function of roots?","Absorb water and minerals","Make flowers","Produce seeds","Make fruits","A"],
+["What is the main function of roots?",
+"Absorb water and minerals",
+"Make flowers",
+"Produce seeds",
+"Make fruits",
+"A"],
 
-["What are root hairs mainly useful for?","Absorbing water and minerals","Making food","Producing flowers","Transporting seeds","A"],
+["What are root hairs mainly useful for?",
+"Absorbing water and minerals",
+"Making food",
+"Producing flowers",
+"Transporting seeds",
+"A"],
 
-["Which tissue carries water from roots to other parts of a plant?","Phloem","Xylem","Stomata","Chlorophyll","B"],
+["Which tissue carries water from roots to other parts of a plant?",
+"Phloem",
+"Xylem",
+"Stomata",
+"Chlorophyll",
+"B"],
 
-["Which tissue carries prepared food in a plant?","Xylem","Phloem","Root hair","Stoma","B"],
+["Which tissue carries prepared food in a plant?",
+"Xylem",
+"Phloem",
+"Root hair",
+"Stoma",
+"B"],
 
-["Which gas is taken in by green plants during photosynthesis?","Oxygen","Nitrogen","Carbon dioxide","Hydrogen","C"],
+["Which gas is taken in by green plants during photosynthesis?",
+"Oxygen",
+"Nitrogen",
+"Carbon dioxide",
+"Hydrogen",
+"C"],
 
-["What food is produced during photosynthesis?","Glucose","Protein","Fat","Mineral salt","A"],
+["What food is produced during photosynthesis?",
+"Glucose",
+"Protein",
+"Fat",
+"Mineral salt",
+"A"],
 
-["Which green substance helps plants absorb light?","Chlorophyll","Glucose","Xylem","Phloem","A"],
+["Which green substance helps plants absorb light?",
+"Chlorophyll",
+"Glucose",
+"Xylem",
+"Phloem",
+"A"],
 
-["What are stomata?","Roots","Tiny openings on leaves","Plant seeds","Flower petals","B"],
+["What are stomata?",
+"Roots",
+"Tiny openings on leaves",
+"Plant seeds",
+"Flower petals",
+"B"],
 
-["What is the main purpose of respiration?","To obtain energy","To make flowers","To absorb sunlight","To produce soil","A"],
+["What is the main purpose of respiration?",
+"To obtain energy",
+"To make flowers",
+"To absorb sunlight",
+"To produce soil",
+"A"],
 
-["Loss of water vapour from leaves is called:","Digestion","Circulation","Transpiration","Excretion","C"],
+["Loss of water vapour from leaves is called:",
+"Digestion",
+"Circulation",
+"Transpiration",
+"Excretion",
+"C"],
 
-["What is the main purpose of breathing?","To digest food","To exchange gases","To make blood","To produce bones","B"],
+["What is the main purpose of breathing?",
+"To digest food",
+"To exchange gases",
+"To make blood",
+"To produce bones",
+"B"],
 
-["Where does most gas exchange occur in the lungs?","Trachea","Alveoli","Nose","Diaphragm","B"],
+["Where does most gas exchange occur in the lungs?",
+"Trachea",
+"Alveoli",
+"Nose",
+"Diaphragm",
+"B"],
 
-["Which gas is needed by body cells for respiration?","Carbon dioxide","Oxygen","Nitrogen","Hydrogen","B"],
+["Which gas is needed by body cells for respiration?",
+"Carbon dioxide",
+"Oxygen",
+"Nitrogen",
+"Hydrogen",
+"B"],
 
-["Which gas is removed from the body during respiration?","Oxygen","Nitrogen","Carbon dioxide","Hydrogen","C"],
+["Which gas is removed from the body during respiration?",
+"Oxygen",
+"Nitrogen",
+"Carbon dioxide",
+"Hydrogen",
+"C"],
 
-["What is the trachea commonly called?","Windpipe","Food pipe","Blood vessel","Air sac","A"],
+["What is the trachea commonly called?",
+"Windpipe",
+"Food pipe",
+"Blood vessel",
+"Air sac",
+"A"],
 
-["What is the main function of the heart?","To digest food","To pump blood","To produce oxygen","To make bones","B"],
+["What is the main function of the heart?",
+"To digest food",
+"To pump blood",
+"To produce oxygen",
+"To make bones",
+"B"],
 
-["Which blood cells carry oxygen?","White blood cells","Red blood cells","Platelets","Plasma cells","B"],
+["Which blood cells carry oxygen?",
+"White blood cells",
+"Red blood cells",
+"Platelets",
+"Plasma cells",
+"B"],
 
-["What is the main function of white blood cells?","Carry oxygen","Defend the body against diseases","Clot blood","Digest food","B"],
+["What is the main function of white blood cells?",
+"Carry oxygen",
+"Defend the body against diseases",
+"Clot blood",
+"Digest food",
+"B"],
 
-["What is the function of platelets?","Help blood clot","Carry oxygen","Fight all viruses","Produce hormones","A"],
+["What is the function of platelets?",
+"Help blood clot",
+"Carry oxygen",
+"Fight all viruses",
+"Produce hormones",
+"A"],
 
-["Which blood vessels usually carry blood away from the heart?","Veins","Arteries","Capillaries","Alveoli","B"],
+["Which blood vessels usually carry blood away from the heart?",
+"Veins",
+"Arteries",
+"Capillaries",
+"Alveoli",
+"B"],
 
-["What is the immune system?","A system that protects the body from disease","A system that digests food","A system that makes bones","A system that controls breathing only","A"],
+["What is the immune system?",
+"A system that protects the body from disease",
+"A system that digests food",
+"A system that makes bones",
+"A system that controls breathing only",
+"A"],
 
-["Disease-causing organisms are called:","Pathogens","Nutrients","Enzymes","Hormones","A"],
+["Disease-causing organisms are called:",
+"Pathogens",
+"Nutrients",
+"Enzymes",
+"Hormones",
+"A"],
 
-["Which cells help protect the body against pathogens?","Red blood cells","White blood cells","Platelets","Bone cells","B"],
+["Which cells help protect the body against pathogens?",
+"Red blood cells",
+"White blood cells",
+"Platelets",
+"Bone cells",
+"B"],
 
-["What does a vaccine mainly do?","Prepares the immune system to fight a disease","Stops breathing","Digests food","Produces red blood cells","A"],
+["What does a vaccine mainly do?",
+"Prepares the immune system to fight a disease",
+"Stops breathing",
+"Digests food",
+"Produces red blood cells",
+"A"],
 
-["An infectious disease can be:","Transmitted from one person to another","Produced only by exercise","Caused only by sunlight","Never transmitted","B"],
+["An infectious disease can be:",
+"Transmitted from one person to another",
+"Produced only by exercise",
+"Caused only by sunlight",
+"Never transmitted",
+"B"],
 
-["Which practice helps prevent the spread of many diseases?","Poor hygiene","Regular handwashing","Skipping meals","Avoiding water","B"],
+["Which practice helps prevent the spread of many diseases?",
+"Poor hygiene",
+"Regular handwashing",
+"Skipping meals",
+"Avoiding water",
+"B"],
 
-["Antibiotics are mainly used against:","Bacteria","All viruses","Broken bones","Lack of vitamins","A"],
+["Antibiotics are mainly used against:",
+"Bacteria",
+"All viruses",
+"Broken bones",
+"Lack of vitamins",
+"A"],
 
-["Why is a balanced diet important?","It provides essential nutrients","It stops breathing","It removes all diseases","It replaces sleep","A"],
+["Why is a balanced diet important?",
+"It provides essential nutrients",
+"It stops breathing",
+"It removes all diseases",
+"It replaces sleep",
+"A"],
 
-["Which system protects the body against many pathogens?","Immune system","Digestive system","Skeletal system","Respiratory system","A"],
+["Which system protects the body against many pathogens?",
+"Immune system",
+"Digestive system",
+"Skeletal system",
+"Respiratory system",
+"A"],
 
-["Which practice is important for preventing many infections?","Good personal hygiene","Eating only sweets","Avoiding sleep","Never washing hands","A"],
+["Which practice is important for preventing many infections?",
+"Good personal hygiene",
+"Eating only sweets",
+"Avoiding sleep",
+"Never washing hands",
+"A"],
 
-["What is an atom?","The smallest unit of an element that retains its properties","A type of cell","A blood vessel","A plant tissue","A"],
+["What is an atom?",
+"The smallest unit of an element that retains its properties",
+"A type of cell",
+"A blood vessel",
+"A plant tissue",
+"A"],
 
-["Which part of an atom contains protons and neutrons?","Electron shell","Nucleus","Cell wall","Cytoplasm","B"],
+["Which part of an atom contains protons and neutrons?",
+"Electron shell",
+"Nucleus",
+"Cell wall",
+"Cytoplasm",
+"B"],
 
-["Which two particles are found in the nucleus?","Protons and neutrons","Electrons and protons","Electrons and neutrons","Only electrons","A"],
+["Which two particles are found in the nucleus?",
+"Protons and neutrons",
+"Electrons and protons",
+"Electrons and neutrons",
+"Only electrons",
+"A"],
 
-["What charge does a proton have?","Positive","Negative","Neutral","No charge","A"],
+["What charge does a proton have?",
+"Positive",
+"Negative",
+"Neutral",
+"No charge",
+"A"],
 
-["What charge does an electron have?","Positive","Negative","Neutral","No charge","B"],
+["What charge does an electron have?",
+"Positive",
+"Negative",
+"Neutral",
+"No charge",
+"B"],
 
-["What charge does a neutron have?","Positive","Negative","Neutral","Double positive","C"],
+["What charge does a neutron have?",
+"Positive",
+"Negative",
+"Neutral",
+"Double positive",
+"C"],
 
-["Where are electrons found in an atom?","Around the nucleus","Inside the proton","Inside the neutron","Only in the nucleus","A"],
+["Where are electrons found in an atom?",
+"Around the nucleus",
+"Inside the proton",
+"Inside the neutron",
+"Only in the nucleus",
+"A"],
 
-["The atomic number of an element is equal to the number of:","Neutrons","Protons","Protons plus neutrons","Electrons plus neutrons","B"],
+["The atomic number of an element is equal to the number of:",
+"Neutrons",
+"Protons",
+"Protons plus neutrons",
+"Electrons plus neutrons",
+"B"],
 
-["A neutral atom has 8 protons. How many electrons does it have?","6","7","8","16","C"],
+["A neutral atom has 8 protons. How many electrons does it have?",
+"6",
+"7",
+"8",
+"16",
+"C"],
 
-["What is the mass number of an atom equal to?","Protons + neutrons","Protons + electrons","Electrons + neutrons","Only electrons","A"]
+["What is the mass number of an atom equal to?",
+"Protons + neutrons",
+"Protons + electrons",
+"Electrons + neutrons",
+"Only electrons",
+"A"]
 
 ];
+
 
 const letters = ["A","B","C","D"];
 
 let studentName = "";
 let rollNumber = "";
 
-const startArea = document.getElementById("startArea");
-const testArea = document.getElementById("testArea");
-const resultArea = document.getElementById("resultArea");
-const questionsBox = document.getElementById("questions");
+const startArea =
+document.getElementById("startArea");
+
+const testArea =
+document.getElementById("testArea");
+
+const resultArea =
+document.getElementById("resultArea");
+
+const questionsBox =
+document.getElementById("questions");
+
+
+/* CREATE QUESTIONS */
 
 function createQuestions(){
 
@@ -465,56 +791,116 @@ function createQuestions(){
 
   questions.forEach((q,index)=>{
 
-    const div = document.createElement("div");
-    div.className = "question";
+    const questionBox =
+      document.createElement("div");
 
-    const title = document.createElement("div");
+    questionBox.className = "question";
+
+    questionBox.dataset.question = index;
+
+
+    const title =
+      document.createElement("div");
+
     title.className = "question-title";
-    title.textContent = (index+1) + ". " + q[0];
 
-    div.appendChild(title);
+    title.textContent =
+      (index + 1) + ". " + q[0];
+
+    questionBox.appendChild(title);
+
 
     for(let i=0;i<4;i++){
 
       const letter = letters[i];
 
-      const label = document.createElement("label");
+      const label =
+        document.createElement("label");
+
       label.className = "option";
 
-      label.innerHTML =
-        '<input type="radio" name="q'+index+'" value="'+letter+'"> '+
-        '<strong>'+letter+'.</strong> '+q[i+1];
+      label.dataset.option = letter;
 
-      div.appendChild(label);
+
+      const radio =
+        document.createElement("input");
+
+      radio.type = "radio";
+      radio.name = "q" + index;
+      radio.value = letter;
+
+
+      label.appendChild(radio);
+
+      const strong =
+        document.createElement("strong");
+
+      strong.textContent =
+        letter + ". ";
+
+      label.appendChild(strong);
+
+      label.appendChild(
+        document.createTextNode(q[i+1])
+      );
+
+
+      questionBox.appendChild(label);
+
     }
 
-    questionsBox.appendChild(div);
+
+    questionsBox.appendChild(questionBox);
+
   });
+
 }
 
-document.getElementById("startBtn").addEventListener("click",function(){
 
-  const name = document.getElementById("studentName").value.trim();
-  const roll = document.getElementById("rollNumber").value.trim();
+/* START TEST */
 
-  const error = document.getElementById("startError");
+document
+.getElementById("startBtn")
+.addEventListener("click",function(){
+
+  const name =
+    document
+    .getElementById("studentName")
+    .value
+    .trim();
+
+  const roll =
+    document
+    .getElementById("rollNumber")
+    .value
+    .trim();
+
+  const error =
+    document.getElementById("startError");
+
 
   if(!name || !roll){
 
-    error.textContent = "Student Name and Roll Number are required.";
+    error.textContent =
+      "Student Name and Roll Number are required.";
 
     return;
   }
+
 
   studentName = name;
   rollNumber = roll;
 
   error.textContent = "";
 
+
   createQuestions();
 
+
   startArea.classList.add("hidden");
+
   testArea.classList.remove("hidden");
+
 
   window.scrollTo({
     top:0,
@@ -524,30 +910,47 @@ document.getElementById("startBtn").addEventListener("click",function(){
 });
 
 
-document.getElementById("testForm").addEventListener("submit",function(e){
+/* SUBMIT TEST */
+
+document
+.getElementById("testForm")
+.addEventListener("submit",async function(e){
 
   e.preventDefault();
 
-  const error = document.getElementById("submitError");
+
+  const error =
+    document.getElementById("submitError");
 
   let unanswered = [];
+
+
+  /* CHECK UNANSWERED */
 
   questions.forEach((q,index)=>{
 
     const selected =
-      document.querySelector('input[name="q'+index+'"]:checked');
+      document.querySelector(
+        'input[name="q' +
+        index +
+        '"]:checked'
+      );
 
     if(!selected){
-      unanswered.push(index+1);
+
+      unanswered.push(index + 1);
+
     }
 
   });
 
+
   if(unanswered.length > 0){
 
     error.textContent =
-      "Please answer all questions. Unanswered: "+
+      "Please answer all questions. Unanswered: " +
       unanswered.join(", ");
+
 
     window.scrollTo({
       top:0,
@@ -555,38 +958,274 @@ document.getElementById("testForm").addEventListener("submit",function(e){
     });
 
     return;
+
   }
+
 
   error.textContent = "";
 
+
   let score = 0;
+
+
+  /* CHECK EVERY QUESTION */
 
   questions.forEach((q,index)=>{
 
     const selected =
-      document.querySelector('input[name="q'+index+'"]:checked');
+      document.querySelector(
+        'input[name="q' +
+        index +
+        '"]:checked'
+      );
 
-    if(selected.value === q[5]){
+
+    const selectedLetter =
+      selected.value;
+
+    const correctLetter =
+      q[5];
+
+
+    if(selectedLetter === correctLetter){
+
       score++;
+
     }
+
+
+    const questionBox =
+      document.querySelector(
+        '.question[data-question="' +
+        index +
+        '"]'
+      );
+
+
+    const optionLabels =
+      questionBox.querySelectorAll(
+        ".option"
+      );
+
+
+    optionLabels.forEach(label=>{
+
+      const optionLetter =
+        label.dataset.option;
+
+      const radio =
+        label.querySelector("input");
+
+
+      /* LOCK ANSWERS */
+
+      radio.disabled = true;
+
+
+      /* REMOVE OLD STYLES */
+
+      label.classList.remove(
+        "correct",
+        "wrong",
+        "correct-answer"
+      );
+
+
+      /*
+        CORRECT ANSWER
+      */
+
+      if(optionLetter === correctLetter){
+
+        label.classList.add(
+          "correct",
+          "correct-answer"
+        );
+
+
+        const feedback =
+          document.createElement("span");
+
+        feedback.className =
+          "feedback";
+
+        feedback.textContent =
+          "✓ Correct Answer";
+
+        label.appendChild(feedback);
+
+      }
+
+
+      /*
+        STUDENT SELECTED WRONG ANSWER
+      */
+
+      if(
+        optionLetter === selectedLetter &&
+        selectedLetter !== correctLetter
+      ){
+
+        label.classList.add("wrong");
+
+
+        const feedback =
+          document.createElement("span");
+
+        feedback.className =
+          "feedback";
+
+        feedback.textContent =
+          "✗ Your Answer";
+
+        label.appendChild(feedback);
+
+      }
+
+    });
 
   });
 
-  const percentage = (score / questions.length * 100).toFixed(2);
 
-  document.getElementById("rName").textContent = studentName;
-  document.getElementById("rRoll").textContent = rollNumber;
-  document.getElementById("rMarks").textContent = score;
-  document.getElementById("rPercentage").textContent = percentage + "%";
+  /* CALCULATE RESULT */
+
+  const total =
+    questions.length;
+
+  const percentage =
+    ((score / total) * 100)
+    .toFixed(2);
+
+
+  document
+  .getElementById("rName")
+  .textContent = studentName;
+
+
+  document
+  .getElementById("rRoll")
+  .textContent = rollNumber;
+
+
+  document
+  .getElementById("rMarks")
+  .textContent = score;
+
+
+  document
+  .getElementById("rPercentage")
+  .textContent =
+    percentage + "%";
+
+
+  document
+  .getElementById("rPosition")
+  .textContent =
+    "Saving...";
+
+
+  document
+  .getElementById("saveMessage")
+  .textContent =
+    "Saving result to SUN.TEC...";
+
 
   /*
-   Position requires a central database containing
-   all students' submitted results.
-   It is intentionally shown as — until that system is connected.
+    SHOW RESULT
   */
 
   testArea.classList.add("hidden");
+
   resultArea.classList.remove("hidden");
+
+
+  /*
+    SEND RESULT TO CLOUDFLARE WORKER
+
+    The Worker endpoint will be completed
+    in the next step.
+  */
+
+  try{
+
+    const response =
+      await fetch(
+        "/api/submit",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+
+            name:studentName,
+
+            roll:rollNumber,
+
+            obtained:score,
+
+            total:total
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if(data.success){
+
+      document
+      .getElementById("rPosition")
+      .textContent =
+        data.result.position ?? "—";
+
+
+      document
+      .getElementById("saveMessage")
+      .textContent =
+        "✓ Result successfully saved.";
+
+    }else{
+
+      document
+      .getElementById("rPosition")
+      .textContent =
+        "—";
+
+
+      document
+      .getElementById("saveMessage")
+      .textContent =
+        "Result calculated. Database connection is pending.";
+
+    }
+
+
+  }catch(error){
+
+    console.error(error);
+
+
+    document
+    .getElementById("rPosition")
+    .textContent =
+      "—";
+
+
+    document
+    .getElementById("saveMessage")
+    .textContent =
+      "Result calculated. Database connection is pending.";
+
+  }
+
 
   window.scrollTo({
     top:0,
